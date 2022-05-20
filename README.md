@@ -1,7 +1,7 @@
 # Electron-Theme-Boilerplate
 Frontend framework designed & developed for an Electron app. (Simplified)
 
-#Screenshots
+# Screenshots
 
 ![App Screens](/Screenshots/00.jpg?raw=true "App Screens")
 ![App Screens](/Screenshots/01.jpg?raw=true "App Screens")
