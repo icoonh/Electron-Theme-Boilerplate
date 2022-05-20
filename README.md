@@ -3,8 +3,6 @@ Frontend framework designed & developed for an Electron app. (Simplified)
 
 #Screenshots
 
-https://github.com/icoonh/Electron-Theme-Boilerplate/blob/main/Screenshots/00.jpg
-
 ![App Screens](/Screenshots/00.jpg?raw=true "App Screens")
 ![App Screens](/Screenshots/01.jpg?raw=true "App Screens")
 ![App Screens](/Screenshots/02.jpg?raw=true "App Screens")
