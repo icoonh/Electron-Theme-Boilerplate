@@ -3,14 +3,16 @@ Frontend framework designed & developed for an Electron app. (Simplified)
 
 #Screenshots
 
-![App Screens](/Electron-Theme-Boilerplate/screenshots/00.jpg?raw=true "App Screens")
-![App Screens](/Electron-Theme-Boilerplate/screenshots/01.jpg?raw=true "App Screens")
-![App Screens](/Electron-Theme-Boilerplate/screenshots/02.jpg?raw=true "App Screens")
-![App Screens](/Electron-Theme-Boilerplate/screenshots/03.jpg?raw=true "App Screens")
-![App Screens](/Electron-Theme-Boilerplate/screenshots/04.jpg?raw=true "App Screens")
-![App Screens](/Electron-Theme-Boilerplate/screenshots/mockup_1.jpg?raw=true "App Screens")
-![App Screens](/Electron-Theme-Boilerplate/screenshots/mockup_2.jpg?raw=true "App Screens")
-![App Screens](/Electron-Theme-Boilerplate/screenshots/mockup_3.jpg?raw=true "App Screens")
-![App Screens](/Electron-Theme-Boilerplate/screenshots/mockup_4.jpg?raw=true "App Screens")
-![App Screens](/Electron-Theme-Boilerplate/screenshots/mockup_5.jpg?raw=true "App Screens")
-![App Screens](/Electron-Theme-Boilerplate/screenshots/mockup_6.jpg?raw=true "App Screens")
+https://github.com/icoonh/Electron-Theme-Boilerplate/blob/main/Screenshots/00.jpg
+
+![App Screens](/Screenshots/00.jpg?raw=true "App Screens")
+![App Screens](/Screenshots/01.jpg?raw=true "App Screens")
+![App Screens](/Screenshots/02.jpg?raw=true "App Screens")
+![App Screens](/Screenshots/03.jpg?raw=true "App Screens")
+![App Screens](/Screenshots/04.jpg?raw=true "App Screens")
+![App Screens](/Screenshots/mockup_1.jpg?raw=true "App Screens")
+![App Screens](/Screenshots/mockup_2.jpg?raw=true "App Screens")
+![App Screens](/Screenshots/mockup_3.jpg?raw=true "App Screens")
+![App Screens](/Screenshots/mockup_4.jpg?raw=true "App Screens")
+![App Screens](/Screenshots/mockup_5.jpg?raw=true "App Screens")
+![App Screens](/Screenshots/mockup_6.jpg?raw=true "App Screens")
