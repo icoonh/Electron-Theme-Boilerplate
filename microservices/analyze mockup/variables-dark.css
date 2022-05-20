@@ -1,0 +1,171 @@
+/*Theme variables*/
+
+[data-theme="dark"] {
+  /* DEFAULT MEDIA */
+
+  --logo-image: url("../images/logo_darkmode.png");
+
+  --bg-image-colored: url("../../../common/images/bglogo_cheetah_darkmode.png");
+  --bg-image-bw: url("../../../common/images/bglogo_cheetah_bw_darkmode.png");
+  
+  /* MEDIA FILTERS */
+
+  --inv: invert(100%);
+  --inv-85: invert(85%);
+  --hue-180: invert(85%) hue-rotate(180deg);
+  --gry-85: grayscale(85%);
+
+  /* DARK THEME COLORS */
+
+  --logo-bg: #1f1f1f;
+  --logo-bg-shadow: #2f2f2f;
+
+  --banner-1: #2f2f2f;
+  --banner-2: #1f1f1f;
+
+  --input-bg: #2f2f2f;
+  --input-bg-2: #555555;
+
+  --border-1: #555555;
+  --border-2: #2f2f2f;
+  --border-3: #1f1f1f;
+
+  --button-1: #555555;
+  --button-2: #888888;
+
+  --hover-1: #2f2f2f;
+  --hover-2: #555555;
+  --hover-3: #ef4036;
+  
+  --select: #555555;
+
+  --slider: #555555;
+  --slider-track: #2f2f2f;
+
+  --primary-1: #a5140d;
+  --primary-2: #7d140e;
+  --primary-3: #8e1811;
+  --primary-4: #fd5e5e; /* f27474 rep */
+  --primary-5: #9f221f; /* 9e1e17, 831610, af1911 rep */
+  --primary-6: #ffebee;
+  --primary-7: #c2241b; /* b7231b, c4160d rep */
+  --primary-8: #650c07;
+
+  --secondary-1: #000000; /*fefefe rep */
+  --secondary-2: #2f2f2f; /* f1f1f1 yerine */
+  --secondary-3: #555555; /* f5f5f5, f9f9f9 rep */
+  --secondary-4: #757575; /* f3f3f3 rep */
+  --secondary-5: #888888; /* e2e2e2, ededed, eeeeee, e6e6e6, e5e5e5 rep */
+  --secondary-6: #999999; /* dadada, dcdcdc, dedede, d9d9d9 rep */
+  --secondary-7: #aaaaaa; /* cccccc rep */
+  --secondary-8: #bbbbbb; /* c7c7c7, b2b2b2, b5b5b5, b8b8b8, bdbdbd rep */
+  --secondary-9: #d2d2d2; /* afafaf rep */
+  --secondary-10: #dddddd; /* 9a9a9a, 989898, 969696 rep */
+  --secondary-11: #e8e8e8; /* 8a8a8a, 8e8e8e rep */
+  --secondary-12: #f1f1f1;
+  --secondary-13: #f7f7f7; /* 545454 rep */
+  --secondary-14: #f0f0f0; /* 212121, 353535 rep ? */
+  --secondary-15: #ffffff;
+  --secondary-16: #181818;
+
+  --table-bg: #1d1d1d;
+  --main-bg: #181818;
+
+  --sidebar: #1f1c1c;
+  
+  --header-1: #9a9a9a;
+  --header-2: #666666;
+  --header-3: #888888;
+  --header-4: #e4675f;
+
+  --text-1: #ffffff;
+  --text-2: #7a7a7a; /* 2f2f2f testing.css */
+  --text-3: #555555; /* 757575 rep only text */
+  --text-4: #000000;
+  --text-5: #e2e0e0;
+  --text-6: #111111;
+
+
+  /* constants */
+
+  --text-white: #ffffff;
+  --text-white-2: #e2e0e0;
+  --text-black: #000000;
+  --text-black-2: #111111;
+
+  --text-highlight: #ef4036;
+
+  --tab-1: #111111;
+  --tab-2: #555555;
+  --tab-3: #333333;
+
+  --table-normal-border: #2b2b2b;
+  --table-outer-border: #2b2b2b;
+
+  --table-th: #3a3a3a;
+  --table-th-first: #252525;
+  --table-th-odd: #252525;
+
+  --table-td-odd: #151515;
+
+  --corr-table-high: #7d1212;
+  --corr-table-medium: #7b3131;
+  --corr-table-weak: #402727;
+  --corr-table-none: #ffebee;
+
+  --badge-1: #948c20; 
+  --badge-2: #53b300;
+
+  --interaction-1: #72ca70;
+  --interaction-2: #adca70;
+  --interaction-3: #cac270;
+  --interaction-4: #e2ba81;
+  --interaction-5: #e6a58d;
+
+  --modal-backdrop: rgba(255,255,255,0.1);
+
+  --shadow-1: rgb(0, 0, 0, 0.7);
+  --shadow-2: rgba(253, 94, 94, 0.5); /* primary-1 */
+  --shadow-3: rgba(0, 0, 0, 0.5);
+  --shadow-4: rgba(159,34,31); /* primary 5 */
+  --shadow-5: rgba(0, 0, 0, 0.08);
+  --shadow-6: rgba(172, 172, 172, 0.2);
+
+  --canvas-frame: #e2e0e0;
+  --canvas-bg: transparent;
+  --canvas-interlace: #202020;
+  --canvas-legend: #e8e8e8;
+  --canvas-red: #9f221f;
+  --canvas-bar: #555555;
+  --canvas-1: #f03442;
+  --canvas-2: #3a94e8;
+  --canvas-3: #ea8021;
+  --canvas-4: #a121ea;
+  --canvas-5: #b7c91c;
+  --canvas-6: #21b5ba;
+  --canvas-7: #ca5528;
+  --canvas-8: #8c44a6;
+  --canvas-9: #a12121;
+  --canvas-10: #9cea21;
+  --canvas-11: #e1d11c;
+  --canvas-12: #33e2dc;
+  --canvas-13: #e55592;
+  --canvas-14: #9c61ed;
+  --canvas-tooltip-bg: #202020;
+
+  /*Area Specific*/
+
+  /*** system navbar ***/
+
+  --menu-dropdown-shadow: 8px 2px 15px -10px var(--shadow-1), -8px 2px 15px -10px var(--shadow-1);
+  --menu-dropdown-bg: #1f1f1f;
+  --menu-dropdown-hover: #2b2b2b;
+  --menu-dropdown-separator: #3a3a3a;
+  --menu-text-white: #c1c1c1;
+
+  /*** create project?? ***/
+
+  --input-group-bg: #2f2f2f;
+
+  
+  }

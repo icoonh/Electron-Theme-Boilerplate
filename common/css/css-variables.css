@@ -1,0 +1,216 @@
+/* Cheetah CSS Variables */
+
+[data-theme='light']{
+
+    /* default media */
+    --logo-image: url("../images/lumnion_logo_white.png");
+    --logo-cheetah: url("../images/applogo_cheetah.png");
+    --bg-image-colored: url("../../../common/images/bglogo_cheetah.png");
+    --bg-image-bw: url("../../../common/images/bglogo_cheetah_bw.png");
+    --btn-dropdown: url("../../common/images/buton_select_bg.png");
+    --btn-close: url("../../../common/images/window_close_dark.png");
+
+    /* media filters */
+    --inv: inherit;
+    --inv-85: inherit;
+    --hue-180: inherit;
+    --gry-85: inherit;
+
+    /* backgrounds */
+    --primary-bg: #fdfdfd;
+    --primary-bg-overlay: rgba(253, 253, 253, 0.863);
+    --secondary-bg: #e8e8e8;
+    --tertiary-bg: #d2d2d2;
+    --table-bg: #ffffff;
+    --button-bg: #ef4036;
+    --model-button-bg: rgb(209, 104, 104);
+    --red-bg: rgb(234, 19, 9);
+    --button-bg-addition: rgb(175, 25, 17);
+    --sidebar-bg: #efe7e7;
+    --sidebar-button-bg: #e8e8e8;
+    --dropdown-menu-bg: #f9f9f9;
+    --warning-background: linear-gradient(to left, #ff4e50, #f9d423);
+
+    /* highlights */
+    --highlight-light: #efd6d6;
+    --highlight-dark: #e2a3a3;
+
+    /* analyze tooltips */
+    --tooltip-type: #e4e4e4;
+    --tooltip-corr: #f1f1f1;
+    --tooltip-model: rgb(249, 198, 198);
+    --tooltip-smoothing: #c1e5ff;
+    --tooltip-text: #555555;
+
+    /* scrollbar */
+    /* --scrollbar-corner: #e2e2e2; */
+    /* --scrollbar-track: #e2e2e2; */
+    /* --scrollbar-track: rgba(0,0,0,0); */
+    --scrollbar-track-shadow: rgba(0, 0, 0, 0.2);
+    --scrollbar-thumb: rgba(0, 0, 0, 0.2);
+    --scrollbar-thumb-shadow: rgba(0,0,0,0.2);
+    --scrollbar-thumb-hover: rgba(95, 95, 95, 0.5);
+
+    /* sidebar svg color */
+    --sidebarbutton: #717171;
+    --sidebarbuttonhover: #575757;
+
+    /* headers */
+    --h1: #000000;
+    --h2: #111111;
+    --h3: #222222;
+    --h4: rgb(239, 64, 54);
+    --hr: #dddddd;
+    --header-contrast: #111111;
+    --header-contrast-2: #111111;
+    --header-soft: #555555;
+    --header-red: #7d1403;
+
+    /* sidebar svg color */
+    --sidebarbutton: #717171;
+    --sidebarbuttonhover: #575757;
+
+    /* placeholder text */
+    --text-placeholder: #bbbbbb;
+
+    /* texts */
+    --text-constant-highlight: #ef4036;
+    --text-constant-white: #ffffff;
+    --text-constant-white-2: #e2e0e0;
+    --text-constant-black: #000000;
+    --text-constant-black-2: #111111;
+    --text-bw: #000000;
+    --text-bw-2: #ffffff;
+    --text-soft: #555555; 
+    --text-soft-2: #7a7a7a;
+    --text-contrast: #111111;
+    --text-contrast-2: #e2e0e0;
+    --text-white-soft: #ffffff;
+    --text-logo: #ffffff;
+
+
+    /* lumnion logo */
+    --logo-primary: #ef4036;
+    --logo-secondary: #c2241b;
+
+    /* banners */
+    --banner-primary: #d43830;
+    --banner-secondary: #ef4036;
+
+    /* window controls */
+    --window-controls: #d43830;
+    --window-controls-hover: #c4160d;
+
+    /* borders */
+    --border-constant-white: #e8e8e8;
+    --border-constant-gray: #555555;
+    --border-constant-dark: #2f2f2f;
+
+    --border-soft: #d2d2d2;
+    --border-soft-2: #999999;
+    --border-contrast: #dddddd;
+    --border-contrast-2: #1f1f1f;
+
+    --border-red: #ef4036;
+
+    /* buttons */
+    --button-soft: #d2d2d2; /* bbbbbb */
+    --button-contrast: #e8e8e8;
+    --hamburger-btn: #fdfdfd;
+
+    /* contrasts */
+    --contrast-wb: #ffffff;
+    --contrast-bw: #000000;
+
+    /* text inputs */
+    --input-bg-contrast: #f1f1f1;
+    --input-bg-contrast-2: #dddddd;
+
+    /* hovers */
+    --hover-contrast: #dddddd;
+    --hover-soft: #bbbbbb;
+    --hover-soft-red: #ea1309;
+    --hover-contrast-red: #c4160d;
+    --hover-dd-buttons: #c4160d;
+    --hover-warning: linear-gradient(to right, #ff4e50, #f9d423);
+
+    /* selection */
+    --select: #e8e8e8;
+
+    /* ruleset */
+    --ruleset-blue: #53b0b5;
+    --ruleset-green: #63b31b;
+    --ruleset-hover-blue: #2a6366;
+    --ruleset-hover-green: #407413;
+
+    /* slider */
+    --slider: #d2d2d2;
+    --slider-track: #e8e8e8;
+
+    /* tabs */
+    --tab-contrast: #f0f0f0;
+    --tab-contrast-2: #d2d2d2;
+    --tab-soft: #aaaaaa;
+    --tab-red: #d43830;
+
+    /* tables */
+    --table-normal-border: #dadada;
+    --table-outer-border: #bdbdbd;
+    --table-th: #bbbbbb;
+    --table-th-first: #d0d0d0;
+    --table-th-odd: #d0d0d0;
+    --table-td-odd: #f5f5f5;
+
+    /* correlation table backgrounds */
+    --corr-table-high: #d50000;
+    --corr-table-medium: #ff2d2d;
+    --corr-table-weak: #fd5e5e;
+    --corr-table-none: #ffebee;
+
+    /* badges */
+    --badge-red: #ea1309;
+    --badge-yellow: #fcb514;
+    --badge-green: #53b300;
+    
+    /* interactions */
+    --interaction-1: #72ca70;
+    --interaction-2: #adca70;
+    --interaction-3: #cac270;
+    --interaction-4: #e2ba81;
+    --interaction-5: #e6a58d;
+
+    /* modal backdrop */
+    --modal-backdrop: rgba(0,0,0,0.8);
+
+    /* shadows */
+    --shadow-alpha-black: rgba(0, 0, 0, 0.5);
+    --shadow-constant-lightred: rgba(253, 94, 94, 0.5);
+    --shadow-constant-black: rgba(0, 0, 0, 0.5);
+    --shadow-constant-darkred: rgba(159,34,31); 
+    --shadow-constant-black-2: rgba(0, 0, 0, 0.08);
+    --shadow-soft: rgba(0, 0, 0, 0.2);
+    --shadow-darken: rgba(0, 0, 0, 0.2);
+
+    /* canvas colors */
+    --canvas-frame: #111111;
+    --canvas-bg: #fdfdfd;
+    --canvas-interlace: #e8e8e8;
+    --canvas-legend: #2f2f2f;
+    --canvas-red: #d43830;
+    --canvas-bar: #bbbbbb;
+    --canvas-1: #f03442;
+    --canvas-2: #3a94e8;
+    --canvas-3: #ea8021;
+    --canvas-4: #a121ea;
+    --canvas-5: #b7c91c;
+    --canvas-6: #21b5ba;
+    --canvas-7: #ca5528;
+    --canvas-8: #8c44a6;
+    --canvas-9: #a12121;
+    --canvas-10: #9cea21;
+    --canvas-11: #e1d11c;
+    --canvas-12: #33e2dc;
+    --canvas-13: #e55592;
+    --canvas-14: #9c61ed;
+    --canvas-tooltip-bg: #ffffff;
+}

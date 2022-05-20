@@ -1,0 +1,232 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+#maincontainer{
+    display: block;
+    width: 100%;
+    padding: 0 0 0 210px;
+    margin: 0;
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    transition: all 0.2s cubic-bezier(0.85, 0.2, 0, 1);
+}
+
+#maincontainer.widecontent{
+    padding-left: 50px;
+    transition: all 0.2s cubic-bezier(0.85, 0.2, 0, 1);
+}
+
+#maincontainer.fullcontent{
+    padding-left: 0px;
+    transition: all 0.2s cubic-bezier(0.85, 0.2, 0, 1);
+}
+
+.widesidebar{
+    display: block;
+    width: 210px;
+    position: absolute;
+    background-color: var(--sidebar-bg);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    transition: all 0.2s cubic-bezier(0.85, 0.2, 0, 1);
+}
+
+.narrowsidebar{
+    display: block;
+    width: 50px;
+    position: absolute;
+    background-color: var(--sidebar-bg);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    transition: all 0.2s cubic-bezier(0.85, 0.2, 0, 1);
+}
+
+.nosidebar{
+    display: none;
+}
+
+#lumnion_logo{
+    display: block;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+}
+
+#progresslist{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+#progresslist .progressbutton{
+    display: block;
+    background-color: transparent;
+    height: 68px;
+    margin: 1px 0;
+    position: relative;
+}
+
+#progresslist .progressbutton:hover{
+    background-color: var(--button-bg);
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+#progresslist .progressbutton:hover .buttonlabel{
+    color: var(--text-contrast);
+    transition: 0.2s;
+}
+
+#progresslist .buttonicon{
+    display: block;
+    float: left;
+    height: 49px;
+    filter: var(--gry-85);
+}
+
+#progresslist .buttoniconactive{
+    display: none;
+    float: left;
+    height: 49px;
+}
+
+#progresslist .buttonlabel{
+    display: block;
+    height: 49px;
+    line-height: 49px;
+    font-family: 'Titillium', sans-serif;
+    font-weight: bold;
+    font-size: 1.0625em;
+    float: left;
+    padding-left: 10px;
+    transition: all 0.2s cubic-bezier(0.85, 0.2, 0, 1);
+}
+
+#progresslist .progressbutton.active{
+    background-color: var(--button-bg);
+}
+
+#progresslist .progressbutton.active .buttonlabel{
+    color: var(--text-constant-white);
+}
+
+#progresslist .progressbutton.active .buttoniconactive{
+    display: block;
+}
+
+#progresslist .progressbutton.active .buttonicon{
+    display: none;
+}
+
+#btn_sidebar{
+    display: block;
+    position: absolute;
+    top: 2px;
+    right: 0;
+    background-color: var(--sidebar-button-bg);
+    height: 35px;
+    width: 35px;
+}
+
+#btn_sidebar div.widestate{
+    display: block;
+}
+
+#btn_sidebar div.narrowstate{
+    display: none;
+}
+
+/* for zooming transitions */
+/*.hidden{
+    opacity: 0;
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+  }
+  
+  .hiddenbefore{
+    opacity: 0;
+    transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+  }*/
+
+#maincontent{
+    padding: 0;
+    display: block;
+    /* opacity: 1;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    transition: all 0.2s linear; */
+}
+
+/* #maincontent.hide{
+    opacity: 0;
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transition: all 0.2s linear;
+}
+
+#maincontent.hidebefore{
+    opacity: 0;
+    transform: scale(1.2);
+    -webkit-transform: scale(0.8);
+    transition: all 0.2s linear;
+} */
+
+.narrowsidebar #progresslist .progressbutton .buttonlabel{
+    font-size: 0em;
+    padding: 0;
+    transition: all 0.2s cubic-bezier(0.85, 0.2, 0, 1);
+}
+
+.narrowsidebar #btn_sidebar{
+    width: 50px;
+    background: none;
+    transition: all 0.2s cubic-bezier(0.85, 0.2, 0, 1);
+}
+
+.narrowsidebar #btn_sidebar div.widestate{
+    display: none;
+}
+
+.narrowsidebar #btn_sidebar div.narrowstate{
+    display: block;
+}
+
+.tooltiptext{
+    visibility: hidden;
+    width: 120px;
+    height: 68px;
+    background-color: var(--button-bg);
+    color: var(--text-constant-white);
+    text-align: center;
+    padding: 14px 0;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    font-family: 'titillium', sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 6px 6px 0;
+    /* box-shadow: 13px 0 13px -10px var(--shadow-1); */
+    opacity: 0;
+}
+
+.narrowsidebar .progressbutton:hover .tooltiptext{
+  color: var(--text-constant-white);
+  visibility: visible;
+  left: 100%;
+  opacity: 1;
+  transition: all 0.2s cubic-bezier(0.85, 0.2, 0, 1);
+}

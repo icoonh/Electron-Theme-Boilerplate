@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+        name='viewport' />
+        <link rel="stylesheet" href="../../common/css/flexboxgrid.css"> <!-- Flexbox responsive grid system -->
+        <link rel="stylesheet" href="../../common/css/reset.css">
+        <link rel="stylesheet" href="lumnidatarow.css"> <!-- css specific to this page -->
+        <title>CHEETAH - ANALYZE DATA</title>
+    </head>
+
+    <body  data-theme="light" onload="parent.sidebarLevel(1); parent.changeTitle('Analyze & Models')">
+
+        <div class="container-fluid">
+            <div class="row">
+              <div id="FactorsSidebar" class="col-xs-4 col-md-3 tabcontainer">
+                <div id="FactorsResizeable" class="tab-content tab-space">
+                  <div class="tab-pane active" id="factorsDiv" aria-expanded="true">
+                    <div class="factorsearchbar row"> 
+                      <div class="col-xs-12">
+                        <div class="search">
+                          <input id="factorSearch" type="search" class="search-box" placeholder="Search in factors...">
+                          <span class="search-button">
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                      <div class="row factorfilterrow">
+                      <div class="col-xs-12 factorbuttons">
+                        <div class="searchgroup">
+                      <input class="lumnicheckbox factor-all-check" type="checkbox" id="factor-all-select" value="">
+                        <div class="factorsortbuttons">
+                          <a class="button-svg factor-sort" data-order="0" data-type="0" title="Sort - Alphabetical" style="--inputsvg: url(../../../common/images/sort_alphabetical.svg)"></a>
+                          <a class="button-svg factor-sort" data-order="0" data-type="1" title="Sort - Numerical" style="--inputsvg: url(../../../common/images/sort_numerical.svg)"></a>
+                          <a class="button-svg" id="toggleUnselectedRaw" data-type="1" title="Filter - Checked Factors" style="--inputsvg: url(../../../common/images/sort_checked.svg)"></a>
+                        </div>
+                    </div>
+                      <div class="factorsearchbarbuttons">
+                        <button id="quickRun" class="btn-exec">▶ RUN</button>
+                        <!-- <a id="expandFactorsList" class="button-svg"
+                                style="--inputsvg: url(../../../common/images/expand_icon.svg)"></a> -->
+                      </div>
+                    </div>
+                    </div>
+        
+                    
+                    <div id="factorsList" tabindex="0">
+        
+          <div data-factor="ZEYL_NO" data-correlation-abs="0.0139" data-correlation="-0.0139" data-json="" data-calculations="0" class="form-group factors gFactor">
+              <div class="lumnidatarow factor">
+                <div class="lumnidatarowlabel">
+                  <input class="lumnicheckbox factor-check" type="checkbox" value="" =""="">
+                  <span class="columnlabel">
+                      ZEYL_NO
+                  </span>
+                  
+                </div>
+                <div class="mini-buttons-hover">
+                  <div class="tooltipcontainer">
+                    <span class="tooltipbase"> -0.01
+                      <span class="tooltiphover">Correlation Score: -0.0139</span>
+                    </span>
+                    <span class="tooltipsymbol factortypeletter">C
+                      <span class="factortypeletterhover">Factor Type: Categoric</span>
+                    </span>
+                  </div>
+                  <div class="radiogroup factor-type">
+                    
+                  </div>
+                  <button class="minibutton createCalculation" title="Create Calculation">
+                    <img src="../../../common/images/button_add.png">
+                  </button>
+                  <!-- <button class="minibutton  createPreview" title="Show Preview">
+                    <img class="preview-btn-img-name" src="../../../common/images/button_preview.png" />
+                  </button> -->
+                </div>
+              </div>
+            </div><div data-factor="yukseklik_mm" data-correlation-abs="0.0165" data-correlation="0.0165" data-json="" data-calculations="1" class="form-group factors gFactor">
+              <div class="lumnidatarow factor">
+                <div class="lumnidatarowlabel">
+                  <input class="lumnicheckbox factor-check" type="checkbox" value="" =""="">
+                  <span class="columnlabel">
+                      yukseklik_mm
+                  </span>
+                  
+                </div>
+                <div class="mini-buttons-hover">
+                  <div class="tooltipcontainer">
+                    <span class="tooltipbase"> 0.02
+                      <span class="tooltiphover">Correlation Score: 0.0165</span>
+                    </span>
+                    <span class="tooltipsymbol factortypeletter">C
+                      <span class="factortypeletterhover">Factor Type: Categoric</span>
+                    </span>
+                  </div>
+                  <div class="radiogroup factor-type">
+                    
+                  </div>
+                  <button class="minibutton createCalculation" title="Create Calculation">
+                    <img src="../../../common/images/button_add.png">
+                  </button>
+                  <!-- <button class="minibutton  createPreview" title="Show Preview">
+                    <img class="preview-btn-img-name" src="../../../common/images/button_preview.png" />
+                  </button> -->
+                </div>
+              </div>
+            
+            <div data-type="0" data-json="" data-factor="BINNED_yukseklik_mm" class="form-group calcFactors gFactor" data-calculations="0">
+              <div class="lumnidatarow factor">
+                <div class="lumnidatarowlabel">
+                  <input class="lumnicheckbox factor-check" type="checkbox" id="factorCalcBINNED_yukseklik_mm" value="" =""="">
+                  <span class="columnlabel">
+                    <span class="tooltipbase-calculated">
+                      <span class="tooltipbase-calculated-inner"></span>
+                      <span class="calculationhover">Calculation</span>
+                    </span>
+                    BINNED_yukseklik_mm
+                  </span>
+                </div>
+                <div class="mini-buttons-hover">
+                  <!-- <div class="radiogroup factor-type">
+                    <input type="radio" id="BINNED_yukseklik_mm_calc" name="BINNED_yukseklik_mm" value="0" checked />
+                    <label class="singlebutton" for="BINNED_yukseklik_mm_calc">C</label>
+                  </div> -->
+                  <div class="tooltipcontainer">
+                    <span class="tooltipbase"> 0.01
+                      <span class="tooltiphover">Correlation Score: (0.0136)</span>
+                    </span>
+                    <span class="tooltipsymbol factortypeletter">C
+                      <span class="factortypeletterhover">Factor Type: Categoric</span>
+                    </span>
+                  </div>
+                  <button data-source-factor="yukseklik_mm" class="minibutton editCalculation" title="Edit Calculation">
+                    <img src="../../../common/images/button_edit.png">
+                  </button>
+                  <button class="minibutton removeCalculation" title="Remove Calculation">
+                    <img src="../../../common/images/button_remove.png">
+                  </button>
+                  <!-- <button class="minibutton createPreview" title="Show Preview">
+                    <img class="preview-img-name" src="../../../common/images/button_preview.png" />
+                  </button> -->
+                  <button class="minibutton createCalculation" title="Create Calculation">
+                    <img src="../../../common/images/button_add.png">
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div><div data-factor="YETKILI_SERVIS" data-correlation-abs="0.0005" data-correlation="0.0005" data-json="" data-calculations="0" class="form-group factors gFactor">
+              <div class="lumnidatarow factor">
+                <div class="lumnidatarowlabel">
+                  <input class="lumnicheckbox factor-check" type="checkbox" value="" =""="">
+                  <span class="columnlabel">
+                      YETKILI_SERVIS
+                  </span>
+                  
+                </div>
+                <div class="mini-buttons-hover">
+                  <div class="tooltipcontainer">
+                    <span class="tooltipbase"> 0.00
+                      <span class="tooltiphover">Correlation Score: 0.0005</span>
+                    </span>
+                    <span class="tooltipsymbol factortypeletter">C
+                      <span class="factortypeletterhover">Factor Type: Categoric</span>
+                    </span>
+                  </div>
+                  <div class="radiogroup factor-type">
+                    
+                  </div>
+                  <button class="minibutton createCalculation" title="Create Calculation">
+                    <img src="../../../common/images/button_add.png">
+                  </button>
+                  <!-- <button class="minibutton  createPreview" title="Show Preview">
+                    <img class="preview-btn-img-name" src="../../../common/images/button_preview.png" />
+                  </button> -->
+                </div>
+              </div>
+            </div><div data-factor="YENILEME_NO" data-correlation-abs="0.0055" data-correlation="-0.0055" data-json="" data-calculations="0" class="form-group factors gFactor">
+              <div class="lumnidatarow factor">
+                <div class="lumnidatarowlabel">
+                  <input class="lumnicheckbox factor-check" type="checkbox" value="" =""="">
+                  <span class="columnlabel">
+                      YENILEME_NO
+                  </span>
+                  
+                </div>
+                <div class="mini-buttons-hover">
+                  <div class="tooltipcontainer">
+                    <span class="tooltipbase"> -0.01
+                      <span class="tooltiphover">Correlation Score: -0.0055</span>
+                    </span>
+                    <span class="tooltipsymbol factortypeletter">C
+                      <span class="factortypeletterhover">Factor Type: Categoric</span>
+                    </span>
+                  </div>
+                  <div class="radiogroup factor-type">
+                    
+                  </div>
+                  <button class="minibutton createCalculation" title="Create Calculation">
+                    <img src="../../../common/images/button_add.png">
+                  </button>
+                  <!-- <button class="minibutton  createPreview" title="Show Preview">
+                    <img class="preview-btn-img-name" src="../../../common/images/button_preview.png" />
+                  </button> -->
+                </div>
+              </div>
+            </div><div data-factor="yakitTipi" data-correlation-abs="0.0011" data-correlation="-0.0011" data-json="" data-calculations="0" class="form-group factors gFactor">
+              <div class="lumnidatarow factor">
+                <div class="lumnidatarowlabel">
+                  <input class="lumnicheckbox factor-check" type="checkbox" value="" =""="">
+                  <span class="columnlabel">
+                      yakitTipi
+                  </span>
+                  
+                </div>
+                <div class="mini-buttons-hover">
+                  <div class="tooltipcontainer">
+                    <span class="tooltipbase"> -0.00
+                      <span class="tooltiphover">Correlation Score: -0.0011</span>
+                    </span>
+                    <span class="tooltipsymbol factortypeletter">C
+                      <span class="factortypeletterhover">Factor Type: Categoric</span>
+                    </span>
+                  </div>
+                  <div class="radiogroup factor-type">
+                    
+                  </div>
+                  <button class="minibutton createCalculation" title="Create Calculation">
+                    <img src="../../../common/images/button_add.png">
+                  </button>
+                  <!-- <button class="minibutton  createPreview" title="Show Preview">
+                    <img class="preview-btn-img-name" src="../../../common/images/button_preview.png" />
+                  </button> -->
+                </div>
+              </div>
+            </div><div data-factor="YAKIT" data-correlation-abs="0.0001" data-correlation="-0.0001" data-json="" data-calculations="4" class="form-group factors gFactor">
+              <div class="lumnidatarow factor factorchecked">
+                <div class="lumnidatarowlabel">
+                  <input class="lumnicheckbox factor-check" type="checkbox" value="" =""="">
+                  <span class="columnlabel">
+                      YAKIT
+                  </span>
+                  
+                </div>
+                <div class="mini-buttons-hover">
+                  <div class="tooltipcontainer">
+                    <span class="tooltipbase"> -0.00
+                      <span class="tooltiphover">Correlation Score: -0.0001</span>
+                    </span>
+                    <span class="tooltipsymbol factortypeletter">C
+                      <span class="factortypeletterhover">Factor Type: Categoric</span>
+                    </span>
+                  <span class="tooltipsymbol modelletter">M<span class="modelletterhover">In Model</span></span></div>
+                  <div class="radiogroup factor-type">
+                    
+                  </div>
+                  <button class="minibutton createCalculation" title="Create Calculation">
+                    <img src="../../../common/images/button_add.png">
+                  </button>
+                  <!-- <button class="minibutton  createPreview" title="Show Preview">
+                    <img class="preview-btn-img-name" src="../../../common/images/button_preview.png" />
+                  </button> -->
+                </div>
+              </div>
+            
+            <div data-type="0" data-json="" data-factor="BINNED_YAKIT" class="form-group calcFactors gFactor" data-calculations="0">
+              <div class="lumnidatarow factor factorchecked">
+                <div class="lumnidatarowlabel">
+                  <input class="lumnicheckbox factor-check" type="checkbox" id="factorCalcBINNED_YAKIT" value="" =""="">
+                  <span class="columnlabel">
+                    <span class="tooltipbase-calculated">
+                      <span class="tooltipbase-calculated-inner"></span>
+                      <span class="calculationhover">Calculation</span>
+                    </span>
+                    BINNED_YAKIT
+                  </span>
+                </div>
+                <div class="mini-buttons-hover">
+                  <!-- <div class="radiogroup factor-type">
+                    <input type="radio" id="BINNED_YAKIT_calc" name="BINNED_YAKIT" value="0" checked />
+                    <label class="singlebutton" for="BINNED_YAKIT_calc">C</label>
+                  </div> -->
+                  <div class="tooltipcontainer">
+                    <span class="tooltipbase"> 0.02
+                      <span class="tooltiphover">Correlation Score: (0.0193)</span>
+                    </span>
+                    <span class="tooltipsymbol factortypeletter">C
+                      <span class="factortypeletterhover">Factor Type: Categoric</span>
+                    </span>
+                  <span class="tooltipsymbol modelletter">M<span class="modelletterhover">In Model</span></span></div>
+                  <button data-source-factor="YAKIT" class="minibutton editCalculation" title="Edit Calculation">
+                    <img src="../../../common/images/button_edit.png">
+                  </button>
+                  <button class="minibutton removeCalculation" title="Remove Calculation">
+                    <img src="../../../common/images/button_remove.png">
+                  </button>
+                  <!-- <button class="minibutton createPreview" title="Show Preview">
+                    <img class="preview-img-name" src="../../../common/images/button_preview.png" />
+                  </button> -->
+                  <button class="minibutton createCalculation" title="Create Calculation">
+                    <img src="../../../common/images/button_add.png">
+                  </button>
+                </div>
+              </div>
+            </div>
+          
+            <div data-type="0" data-json="" data-factor="IN_YAKIT__ZEYL_NO" class="form-group calcFactors gFactor" data-calculations="0">
+              <div class="lumnidatarow factor factorchecked">
+                <div class="lumnidatarowlabel">
+                  <input class="lumnicheckbox factor-check" type="checkbox" id="factorCalcIN_YAKIT__ZEYL_NO" value="" =""="">
+                  <span class="columnlabel">
+                    <span class="tooltipbase-calculated">
+                      <span class="tooltipbase-calculated-inner-interacted"></span>
+                      <span class="calculationhover">Interaction</span>
+                    </span>
+                    IN_YAKIT__ZEYL_NO
+                  </span>
+                </div>
+                <div class="mini-buttons-hover">
+                  <!-- <div class="radiogroup factor-type">
+                    <input type="radio" id="IN_YAKIT__ZEYL_NO_calc" name="IN_YAKIT__ZEYL_NO" value="0" checked />
+                    <label class="singlebutton" for="IN_YAKIT__ZEYL_NO_calc">C</label>
+                  </div> -->
+                  <div class="tooltipcontainer">
+                    <span class="tooltipbase"> -0.00
+                      <span class="tooltiphover">Correlation Score: (-0.0004)</span>
+                    </span>
+                    <span class="tooltipsymbol factortypeletter">C
+                      <span class="factortypeletterhover">Factor Type: Categoric</span>
+                    </span>
+                  <span class="tooltipsymbol modelletter">M<span class="modelletterhover">In Model</span></span></div>
+                  <button data-source-factor="YAKIT" class="minibutton editCalculation" title="Edit Calculation">
+                    <img src="../../../common/images/button_edit.png">
+                  </button>
+                  <button class="minibutton removeCalculation" title="Remove Calculation">
+                    <img src="../../../common/images/button_remove.png">
+                  </button>
+                  <!-- <button class="minibutton createPreview" title="Show Preview">
+                    <img class="preview-img-name" src="../../../common/images/button_preview.png" />
+                  </button> -->
+                  <button class="minibutton createCalculation" title="Create Calculation">
+                    <img src="../../../common/images/button_add.png">
+                  </button>
+                </div>
+              </div>
+            </div>
+          
+            <div data-type="0" data-json="" data-factor="BINNED_YAKIT_2" class="form-group calcFactors gFactor" data-calculations="0">
+              <div class="lumnidatarow factor">
+                <div class="lumnidatarowlabel">
+                  <input class="lumnicheckbox factor-check" type="checkbox" id="factorCalcBINNED_YAKIT_2" value="" =""="">
+                  <span class="columnlabel">
+                    <span class="tooltipbase-calculated">
+                      <span class="tooltipbase-calculated-inner"></span>
+                      <span class="calculationhover">Calculation</span>
+                    </span>
+                    BINNED_YAKIT_2
+                  </span>
+                </div>
+                <div class="mini-buttons-hover">
+                  <!-- <div class="radiogroup factor-type">
+                    <input type="radio" id="BINNED_YAKIT_2_calc" name="BINNED_YAKIT_2" value="0" checked />
+                    <label class="singlebutton" for="BINNED_YAKIT_2_calc">C</label>
+                  </div> -->
+                  <div class="tooltipcontainer">
+                    <span class="tooltipbase"> 0.02
+                      <span class="tooltiphover">Correlation Score: (0.0193)</span>
+                    </span>
+                    <span class="tooltipsymbol factortypeletter">C
+                      <span class="factortypeletterhover">Factor Type: Categoric</span>
+                    </span>
+                  </div>
+                  <button data-source-factor="YAKIT" class="minibutton editCalculation" title="Edit Calculation">
+                    <img src="../../../common/images/button_edit.png">
+                  </button>
+                  <button class="minibutton removeCalculation" title="Remove Calculation">
+                    <img src="../../../common/images/button_remove.png">
+                  </button>
+                  <!-- <button class="minibutton createPreview" title="Show Preview">
+                    <img class="preview-img-name" src="../../../common/images/button_preview.png" />
+                  </button> -->
+                  <button class="minibutton createCalculation" title="Create Calculation">
+                    <img src="../../../common/images/button_add.png">
+                  </button>
+                </div>
+              </div>
+            </div>
+          
+            <div data-type="0" data-json="" data-factor="IN_YAKIT__yakitTipi" class="form-group calcFactors gFactor" data-calculations="0">
+              <div class="lumnidatarow factor">
+                <div class="lumnidatarowlabel">
+                  <input class="lumnicheckbox factor-check" type="checkbox" id="factorCalcIN_YAKIT__yakitTipi" value="" =""="">
+                  <span class="columnlabel">
+                    <span class="tooltipbase-calculated">
+                      <span class="tooltipbase-calculated-inner-interacted"></span>
+                      <span class="calculationhover">Interaction</span>
+                    </span>
+                    IN_YAKIT__yakitTipi
+                  </span>
+                </div>
+                <div class="mini-buttons-hover">
+                  <!-- <div class="radiogroup factor-type">
+                    <input type="radio" id="IN_YAKIT__yakitTipi_calc" name="IN_YAKIT__yakitTipi" value="0" checked />
+                    <label class="singlebutton" for="IN_YAKIT__yakitTipi_calc">C</label>
+                  </div> -->
+                  <div class="tooltipcontainer">
+                    <span class="tooltipbase"> -0.00
+                      <span class="tooltiphover">Correlation Score: (-0.0004)</span>
+                    </span>
+                    <span class="tooltipsymbol factortypeletter">C
+                      <span class="factortypeletterhover">Factor Type: Categoric</span>
+                    </span>
+                  </div>
+                  <button data-source-factor="YAKIT" class="minibutton editCalculation" title="Edit Calculation">
+                    <img src="../../../common/images/button_edit.png">
+                  </button>
+                  <button class="minibutton removeCalculation" title="Remove Calculation">
+                    <img src="../../../common/images/button_remove.png">
+                  </button>
+                  <!-- <button class="minibutton createPreview" title="Show Preview">
+                    <img class="preview-img-name" src="../../../common/images/button_preview.png" />
+                  </button> -->
+                  <button class="minibutton createCalculation" title="Create Calculation">
+                    <img src="../../../common/images/button_add.png">
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div><div data-factor="uzunluk_mm" data-correlation-abs="0.0219" data-correlation="0.0219" data-json="" data-calculations="0" class="form-group factors gFactor">
+              <div class="lumnidatarow factor">
+                <div class="lumnidatarowlabel numericrow">
+                  
+                  <span class="columnlabel">
+                      uzunluk_mm
+                  </span>
+                  
+                </div>
+                <div class="mini-buttons-hover">
+                  <div class="tooltipcontainer">
+                    <span class="tooltipbase"> 0.02
+                      <span class="tooltiphover">Correlation Score: 0.0219</span>
+                    </span>
+                    <span class="tooltipsymbol factortypeletter">N
+                      <span class="factortypeletterhover">Factor Type: Numeric</span>
+                    </span>
+                  </div>
+                  <div class="radiogroup factor-type">
+                    
+                  </div>
+                  <button class="minibutton createCalculation" title="Create Calculation">
+                    <img src="../../../common/images/button_add.png">
+                  </button>
+                  <!-- <button class="minibutton  createPreview" title="Show Preview">
+                    <img class="preview-btn-img-name" src="../../../common/images/button_preview.png" />
+                  </button> -->
+                </div>
+              </div>
+            </div><div data-factor="TRAFIK_ADET" data-correlation-abs="0.019" data-correlation="0.019" data-json="" data-calculations="0" class="form-group factors gFactor">
+              <div class="lumnidatarow factor">
+                <div class="lumnidatarowlabel">
+                  <input class="lumnicheckbox factor-check" type="checkbox" value="" =""="">
+                  <span class="columnlabel">
+                      TRAFIK_ADET
+                  </span>
+                  
+                </div>
+                <div class="mini-buttons-hover">
+                  <div class="tooltipcontainer">
+                    <span class="tooltipbase"> 0.02
+                      <span class="tooltiphover">Correlation Score: 0.0190</span>
+                    </span>
+                    <span class="tooltipsymbol factortypeletter">C
+                      <span class="factortypeletterhover">Factor Type: Categoric</span>
+                    </span>
+                  </div>
+                  <div class="radiogroup factor-type">
+                    
+                  </div>
+                  <button class="minibutton createCalculation" title="Create Calculation">
+                    <img src="../../../common/images/button_add.png">
+                  </button>
+                  <!-- <button class="minibutton  createPreview" title="Show Preview">
+                    <img class="preview-btn-img-name" src="../../../common/images/button_preview.png" />
+                  </button> -->
+                </div>
+              </div>
+            </div><div data-factor="tork_nm" data-correlation-abs="0.0198" data-correlation="0.0198" data-json="" data-calculations="1" class="form-group factors gFactor">
+              <div class="lumnidatarow factor factorchecked">
+                <div class="lumnidatarowlabel">
+                  <input class="lumnicheckbox factor-check" type="checkbox" value="" =""="">
+                  <span class="columnlabel">
+                      tork_nm
+                  </span>
+                  
+                </div>
+                <div class="mini-buttons-hover">
+                  <div class="tooltipcontainer">
+                    <span class="tooltipbase"> 0.02
+                      <span class="tooltiphover">Correlation Score: 0.0198</span>
+                    </span>
+                    <span class="tooltipsymbol factortypeletter">C
+                      <span class="factortypeletterhover">Factor Type: Categoric</span>
+                    </span>
+                  <span class="tooltipsymbol modelletter">M<span class="modelletterhover">In Model</span></span></div>
+                  <div class="radiogroup factor-type">
+                    
+                  </div>
+                  <button class="minibutton createCalculation" title="Create Calculation">
+                    <img src="../../../common/images/button_add.png">
+                  </button>
+                  <!-- <button class="minibutton  createPreview" title="Show Preview">
+                    <img class="preview-btn-img-name" src="../../../common/images/button_preview.png" />
+                  </button> -->
+                </div>
+              </div>
+            
+            <div data-type="0" data-json="" data-factor="BINNED_tork_nm" class="form-group calcFactors gFactor" data-calculations="0">
+              <div class="lumnidatarow factor factorchecked">
+                <div class="lumnidatarowlabel">
+                  <input class="lumnicheckbox factor-check" type="checkbox" id="factorCalcBINNED_tork_nm" value="" =""="">
+                  <span class="columnlabel">
+                    <span class="tooltipbase-calculated">
+                      <span class="tooltipbase-calculated-inner"></span>
+                      <span class="calculationhover">Calculation</span>
+                    </span>
+                    BINNED_tork_nm
+                  </span>
+                </div>
+                <div class="mini-buttons-hover">
+                  <!-- <div class="radiogroup factor-type">
+                    <input type="radio" id="BINNED_tork_nm_calc" name="BINNED_tork_nm" value="0" checked />
+                    <label class="singlebutton" for="BINNED_tork_nm_calc">C</label>
+                  </div> -->
+                  <div class="tooltipcontainer">
+                    <span class="tooltipbase"> 0.02
+                      <span class="tooltiphover">Correlation Score: (0.0177)</span>
+                    </span>
+                    <span class="tooltipsymbol factortypeletter">C
+                      <span class="factortypeletterhover">Factor Type: Categoric</span>
+                    </span>
+                  <span class="tooltipsymbol modelletter">M<span class="modelletterhover">In Model</span></span></div>
+                  <button data-source-factor="tork_nm" class="minibutton editCalculation" title="Edit Calculation">
+                    <img src="../../../common/images/button_edit.png">
+                  </button>
+                  <button class="minibutton removeCalculation" title="Remove Calculation">
+                    <img src="../../../common/images/button_remove.png">
+                  </button>
+                  <!-- <button class="minibutton createPreview" title="Show Preview">
+                    <img class="preview-img-name" src="../../../common/images/button_preview.png" />
+                  </button> -->
+                  <button class="minibutton createCalculation" title="Create Calculation">
+                    <img src="../../../common/images/button_add.png">
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div><div data-factor="TOPLAM_POL_ADEDI" data-correlation-abs="0.0019" data-correlation="-0.0019" data-json="" data-calculations="0" class="form-group factors gFactor">
+              <div class="lumnidatarow factor">
+                <div class="lumnidatarowlabel">
+                  <input class="lumnicheckbox factor-check" type="checkbox" value="" =""="">
+                  <span class="columnlabel">
+                      TOPLAM_POL_ADEDI
+                  </span>
+                  
+                </div>
+                <div class="mini-buttons-hover">
+                  <div class="tooltipcontainer">
+                    <span class="tooltipbase"> -0.00
+                      <span class="tooltiphover">Correlation Score: -0.0019</span>
+                    </span>
+                    <span class="tooltipsymbol factortypeletter">C
+                      <span class="factortypeletterhover">Factor Type: Categoric</span>
+                    </span>
+                  </div>
+                  <div class="radiogroup factor-type">
+                    
+                  </div>
+                  <button class="minibutton createCalculation" title="Create Calculation">
+                    <img src="../../../common/images/button_add.png">
+                  </button>
+                  <!-- <button class="minibutton  createPreview" title="Show Preview">
+                    <img class="preview-btn-img-name" src="../../../common/images/button_preview.png" />
+                  </button> -->
+                </div>
+              </div>
+            </div></div>
+                  </div>
+                  <div class="tab-pane" id="factorsCalculated" aria-expanded="true">
+                    <div class="factorsearchbar row">
+                      <div class="col-xs-12">
+                        <button id="toggleUnselectedCalc" class="hideshow" data-type="1">Hide Unselected</button>
+                      </div>
+                    </div>
+                    <div id="factorsListCalculated"></div>
+        
+                  </div>
+                <div class="resizehandle"></div></div>
+              </div>
+          </div>

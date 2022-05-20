@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Tariff Module Container - @todo: ARIA version -->
+  <title>BOILERPLATE</title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+    name='viewport' />
+  <!-- <link rel="stylesheet" href="../common/css/sweetalert2.css"> Sweetalert2 css -->
+  <link rel="stylesheet" href="../../common/css/flexboxgrid.css"> <!-- Flexbox responsive grid system -->
+  <link rel="stylesheet" href="../common/css/reset.css">
+  <!--Common elements like h1, button, etc.-->
+  <link rel="stylesheet" href="../common/css/navbar.css">
+  <!-- Titlebar/Navbar-->
+  <link rel="stylesheet" href="main_container_style.css">
+  <!--css specific to this container-->
+
+</head>
+
+<body>
+  <nav id="tariff_navbar" data-theme="light">
+    <div class="titlecontainer">
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <div id="hamburgerBtn" class="hamburger-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div> <!-- Hamburger Button Ends -->
+        <div class="navbar-logo">
+          <div class="amblem-text-container">
+            <span class="logo-text">LoremIP</span>
+            <span class="navbar-logo-image"></span>
+          </div>
+        </div>
+        <div class="navbar-logo-responsive">
+          <span class="navbar-logo-resp"></span>
+        </div>
+        <div id="slide" class="wrapper">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink">File</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#" onclick="gotoPage('start/index.html')">Create or Open Project</a>
+                <a class="dropdown-item" href="javascript:openSettingsWindow()">Settings</a>
+                <span class="dropdown-separator"></span>
+                <a class="dropdown-item" href="#" onclick="goodBye()">Exit</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown" id="ruledropdown" style="display: none;">
+              <a class="nav-link dropdown-toggle" href="#">
+                Rules
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#" onclick="openRuleEnginePage(0)">Rule Engine</a>
+                <a class="dropdown-item" href="#" onclick="gotoPage('constantvalues/index.html')">Constant Values</a>
+                <a class="dropdown-item" href="#" onclick="openRuleEnginePage(1)">Aggregated Rule Engine</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#">
+                Help
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Dolphin <span id="product-version">v1.0</span></a>
+                <span class="dropdown-separator"></span>
+                <a class="dropdown-item" href="#" onclick="openHelpWindow('notes')">Notes</a>
+                <a class="dropdown-item" href="#" onclick="openHelpWindow('log')">Project Logs</a>
+                <a class="dropdown-item" href="#" onclick="openHelpWindow('usermanual')">User Manual</a>
+                <a class="dropdown-item" href="#" onclick="openHelpWindow('error_log')">Send Error Logs</a>
+                <span class="dropdown-separator"></span>
+                <a class="dropdown-item" href="#" onclick="openHelpWindow('license')">Change License</a>
+
+              </div>
+            </li>
+            <li class="nav-item dropdown addedlater">
+              <a class="nav-link dropdown-toggle" href="#">
+                Extra - Added Later
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Some Extra Functionality</a>
+                <span class="dropdown-separator"></span>
+                <a class="dropdown-item" href="#" onclick="">Menu Item 1</a>
+                <a class="dropdown-item" href="#" onclick="">Menu Item 2</a>
+                <a class="dropdown-item" href="#" onclick="">Menu Item 3</a>
+                <a class="dropdown-item" href="#" onclick="">Menu Item 4</a>
+                <a class="dropdown-item" href="#" onclick="">Menu Item 5</a>
+                <a class="dropdown-item" href="#" onclick="">Menu Item 6</a>
+                <span class="dropdown-separator"></span>
+                <a class="dropdown-item" href="#" onclick="openHelpWindow('license')">Contact Us</a>
+              </div>
+            </li>
+          </ul>
+        </div> <!-- Wrapper Ends-->
+        <button id="ThemeSwitcher" class="navbutton">
+          <span id="sunandmoon" class="moon"></span>
+          <!--Moon class was given defa-->
+        </button>
+      </div> <!-- Navbar Dropdown End-->
+      <div id="titlebar">Main App Styling Template | <span id="secondtitle">Second Title </span><span id="thirdtitle">-
+          Third Title</span></div>
+      <div id="window-controls">
+        <div class="window-button" id="min-button">
+          <img src="../../common/images/window_minimize.png" />
+        </div>
+        <div class="window-button disabled" id="max-button">
+          <img src="../../common/images/window_maximize.png" />
+        </div>
+        <div class="window-button" id="restore-button">
+          <img src="../../common/images/window_restore.png" />
+        </div>
+        <div class="window-button" id="close-button">
+          <img src="../../common/images/window_close.png" />
+        </div>
+      </div> <!-- Window Controls End -->
+    </div> <!-- Title Container Ends-->
+  </nav> <!-- Tariff Navbar Ends-->
+  <div id="maincontainer" class="widecontent" data-theme="light">
+    <div id="tariffsidebar" class="narrowsidebar">
+      <div id="progresslist">
+        <!-- dolphin buttons -->
+        <button id="btn_mergedata" class="progressbutton" data-url="merge/index.html">
+          <div class="buttonicon"><img src="../../common/images/sidebaricon_merge_2.png" alt="Merge" /></div>
+          <div class="buttoniconactive"><img src="../../common/images/sidebaricon_merge_1.png" alt="Merge" /></div>
+          <div class="buttonlabel">Merge Models</div>
+          <span class="tooltiptext">Merge Models</span>
+        </button>
+        <button id="btn_simulation" class="progressbutton" data-url="simulation/index.html">
+          <div class="buttonicon"><img src="../../common/images/sidebaricon_simulation_2.png" alt="Simulation" /></div>
+          <div class="buttoniconactive"><img src="../../common/images/sidebaricon_simulation_1.png" alt="Simulation" />
+          </div>
+          <div class="buttonlabel">Simulation</div>
+          <span class="tooltiptext">Simulation</span>
+        </button>
+        <button id="btn_comparison" class="progressbutton" data-url="comparison/index.html">
+          <div class="buttonicon"><img src="../../common/images/sidebaricon_simulationcomparison_2.png"
+              alt="Comparison" /></div>
+          <div class="buttoniconactive"><img src="../../common/images/sidebaricon_simulationcomparison_1.png"
+              alt="Comparison" /></div>
+          <div class="buttonlabel">Simulation Comparison</div>
+          <span class="tooltiptext">Simulation Comparison</span>
+        </button>
+        <button id="btn_engine" class="progressbutton" data-url="engine/index.html">
+          <div class="buttonicon"><img src="../../common/images/sidebaricon_engine_2.png" alt="Engine" /></div>
+          <div class="buttoniconactive"><img src="../../common/images/sidebaricon_engine_1.png" alt="Engine" /></div>
+          <div class="buttonlabel">Engine</div>
+          <span class="tooltiptext">Engine</span>
+        </button>
+        <!-- cheetah buttons -->
+        <button id="btn_analyzedata" class="progressbutton" data-url="tariffmodule/analyze/index.html">
+          <div class="buttoncontent">
+            <div class="buttonicon"><img src="../../common/images/sidebaricon_analyze_2.png" alt="Analyze & GLM" />
+            </div>
+            <div class="buttoniconactive"><img src="../../common/images/sidebaricon_analyze_1.png"
+                alt="Analyze & GLM" /></div>
+            <div class="buttonlabel">Analyze & GLM</div>
+            <span class="tooltiptext">Analyze & GLM</span>
+          </div>
+        </button>
+        <button id="btn_modelling" class="progressbutton" data-url="tariffmodule/modelling/index.html">
+          <div class="buttonicon"><img src="../../common/images/sidebaricon_modelling_2.png" alt="ML" /></div>
+          <div class="buttoniconactive"><img src="../../common/images/sidebaricon_modelling_1.png" alt="ML" /></div>
+          <div class="buttonlabel">Machine Learning</div>
+          <span class="tooltiptext">Machine Learning</span>
+        </button>
+        <button id="btn_test" class="progressbutton" data-url="tariffmodule/test/index.html">
+          <div class="buttonicon"><img src="../../common/images/sidebaricon_testing_2.png" alt="Model Comparison" />
+          </div>
+          <div class="buttoniconactive"><img src="../../common/images/sidebaricon_testing_1.png"
+              alt="Model Comparison" /></div>
+          <div class="buttonlabel">Model Comparison</div>
+          <span class="tooltiptext">Model Comparison</span>
+        </button>
+        <button id="btn_report" class="progressbutton" data-url="tariffmodule/report/index.html">
+          <div class="buttonicon"><img src="../../common/images/sidebaricon_reporting_2.png" alt="Report" /></div>
+          <div class="buttoniconactive"><img src="../../common/images/sidebaricon_reporting_1.png" alt="Report" /></div>
+          <div class="buttonlabel">Report</div>
+          <span class="tooltiptext">Report</span>
+        </button>
+      </div> <!-- Progress List Ends -->
+      <div id="sidebar_append">
+        <!-- Maybe we can append dynamic content here. -->
+        <button title="User Manual" id="btn_info" class="settingsbutton" onclick="openTariffHelpWindow('usermanual')">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="-263 385 24 24" class="sidebarsetting">
+            <path
+              d="M-251.2 394.8c-0.8 0-0.8 0-0.8-0.6 0-0.6 0-0.6 0.8-0.6 1.1 0 1.6-0.4 1.6-1.7 0-1.2-0.4-1.7-1.7-1.7 -0.6 0-1.3 0.1-1.8 0.2 -0.7 0.2-0.7 0.2-0.9-0.4 -0.2-0.6-0.2-0.6 0.5-0.8 0.7-0.2 1.5-0.3 2.3-0.3 2.3 0 3.1 1 3.1 2.8C-248.1 394-249.2 394.8-251.2 394.8zM-252 398.2c0 0 0-0.9 0-0.9 0-0.7 0-0.7 0.7-0.7s0.7 0 0.7 0.7c0 0 0 0.9 0 0.9 0 0.7 0 0.8-0.7 0.8C-251.9 398.9-252 398.9-252 398.2z"
+              class="path1" />
+            <path
+              d="M-244.3 385.2h-12.2c-1.3 0-2.3 1.1-2.3 2.3v15.3 1.2c0 1.1 1 1.9 2.3 1.9h1.2v2.7l2.2-1.6 2.2 1.6V406h7.3c0.3 0 0.6-0.3 0.6-0.6V402v-1 -14.6C-243.2 385.7-243.7 385.2-244.3 385.2zM-252.1 406.7l-1.2-0.9 -1.2 0.9V406v-2.2h2.3v2.2V406.7zM-244.2 405h-6.9v-2.2h-4.3v2.2h-1.2c-0.7 0-1.3-0.4-1.3-0.9v-1.2c0-0.5 0.6-0.9 1.3-0.9h12.4V405zM-256.6 401c-0.2 0-0.4 0-0.6 0.1 0 0-0.1 0-0.1 0 -0.2 0.1-0.4 0.1-0.5 0.2 0 0 0 0 0 0v-13.7c0-0.7 0.6-1.3 1.3-1.3h12.2c0.1 0 0.1 0.1 0.1 0.1V401H-256.6z"
+              class="path2" />
+          </svg>
+        </button>
+        <button title="Settings" id="btn_settings" class="settingsbutton" onclick="openSettingsWindow()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="-263 385 24 24" class="sidebarsetting">
+            <path
+              d="M-240.2 394.3h-2.2c-0.4 0-0.7-0.2-0.8-0.5 -0.1-0.3-0.1-0.7 0.2-0.9l1.6-1.6c0.2-0.2 0.4-0.5 0.4-0.9 0-0.3-0.1-0.6-0.4-0.9l-2-2c-0.5-0.5-1.3-0.5-1.7 0l-1.6 1.6c-0.3 0.3-0.6 0.3-0.9 0.2 -0.3-0.1-0.5-0.4-0.5-0.8v-2.2c0-0.7-0.6-1.2-1.2-1.2h-2.9c-0.7 0-1.2 0.6-1.2 1.2v2.2c0 0.4-0.2 0.7-0.5 0.8 -0.3 0.1-0.7 0.1-0.9-0.2l-1.6-1.6c-0.5-0.5-1.3-0.5-1.7 0l-2 2c-0.2 0.2-0.4 0.5-0.4 0.9 0 0.3 0.1 0.6 0.4 0.9l1.6 1.6c0.3 0.3 0.3 0.6 0.2 0.9 -0.1 0.3-0.4 0.5-0.8 0.5h-2.2c-0.7 0-1.2 0.6-1.2 1.2v2.9c0 0.7 0.6 1.2 1.2 1.2h2.2c0.4 0 0.7 0.2 0.8 0.5 0.1 0.3 0.1 0.7-0.2 0.9l-1.6 1.6c-0.2 0.2-0.4 0.5-0.4 0.9 0 0.3 0.1 0.6 0.4 0.9l2 2c0.5 0.5 1.3 0.5 1.7 0l1.6-1.6c0.3-0.3 0.6-0.3 0.9-0.2 0.3 0.1 0.5 0.4 0.5 0.8v2.2c0 0.7 0.6 1.2 1.2 1.2h2.9c0.7 0 1.2-0.6 1.2-1.2v-2.2c0-0.4 0.2-0.7 0.5-0.8 0.3-0.1 0.7-0.1 0.9 0.2l1.6 1.6c0.5 0.5 1.3 0.5 1.7 0l2-2c0.2-0.2 0.4-0.5 0.4-0.9 0-0.3-0.1-0.6-0.4-0.9l-1.6-1.6c-0.3-0.3-0.3-0.6-0.2-0.9 0.1-0.3 0.4-0.5 0.8-0.5h2.2c0.7 0 1.2-0.6 1.2-1.2v-2.9C-239 394.9-239.6 394.3-240.2 394.3zM-239.9 398.4c0 0.2-0.2 0.3-0.3 0.3h-2.2c-0.7 0-1.3 0.4-1.6 1.1 -0.3 0.7-0.1 1.4 0.4 1.9l1.6 1.6c0.1 0.1 0.1 0.4 0 0.5l-2 2c-0.1 0.1-0.4 0.1-0.5 0l-1.6-1.6c-0.5-0.5-1.2-0.7-1.9-0.4 -0.7 0.3-1.1 0.9-1.1 1.6v2.2c0 0.2-0.2 0.3-0.3 0.3h-2.9c-0.2 0-0.3-0.2-0.3-0.3v-2.2c0-0.7-0.4-1.3-1.1-1.6 -0.2-0.1-0.5-0.1-0.7-0.1 -0.5 0-0.9 0.2-1.2 0.5l-1.6 1.6c-0.1 0.1-0.4 0.1-0.5 0l-2-2c-0.1-0.1-0.1-0.4 0-0.5l1.6-1.6c0.5-0.5 0.7-1.2 0.4-1.9 -0.3-0.7-0.9-1.1-1.6-1.1h-2.2c-0.2 0-0.3-0.2-0.3-0.3v-2.9c0-0.2 0.2-0.3 0.3-0.3h2.2c0.7 0 1.3-0.4 1.6-1.1 0.3-0.7 0.1-1.4-0.4-1.9l-1.6-1.6c-0.1-0.1-0.1-0.4 0-0.5l2-2c0.1-0.1 0.4-0.1 0.5 0l1.6 1.6c0.5 0.5 1.2 0.7 1.9 0.4 0.7-0.3 1.1-0.9 1.1-1.6v-2.2c0-0.2 0.2-0.3 0.3-0.3h2.9c0.2 0 0.3 0.2 0.3 0.3v2.2c0 0.7 0.4 1.3 1.1 1.6 0.7 0.3 1.4 0.1 1.9-0.4l1.6-1.6c0.1-0.1 0.4-0.1 0.5 0l2 2c0.1 0.1 0.1 0.4 0 0.5l-1.6 1.6c-0.5 0.5-0.7 1.2-0.4 1.9 0.3 0.7 0.9 1.1 1.6 1.1h2.2c0.2 0 0.3 0.2 0.3 0.3V398.4z"
+              class="outergear" />
+            <path
+              d="M-251 393c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4S-248.8 393-251 393zM-251 400.1c-1.7 0-3.1-1.4-3.1-3.1s1.4-3.1 3.1-3.1 3.1 1.4 3.1 3.1S-249.3 400.1-251 400.1z"
+              class="innergear" />
+          </svg>
+        </button>
+      </div> <!-- Sidebar Append Ends-->
+    </div> <!-- Tariff Sidebar Ends -->
+
+    <iframe name="maincontent" id="maincontent" class="widecontent" src="elements/index.html" frameborder="0" border="0"
+      cellspacing="0" style="border-style: none; width: 100%; height: 100%;" onload="">
+    </iframe>
+
+    <!-- MAIN CONTENT END -->
+
+  </div> <!-- under navbar container end-->
+  </div>
+  <!--pagecontainer end-->
+
+</body>
+
+</html>

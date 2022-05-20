@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+
+  <title>CHEETAH - ANALYZE DATA</title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+    name='viewport' />
+
+  <link rel="stylesheet" href="../../../common/css/flexboxgrid.css"> <!-- Flexbox responsive grid system -->
+  <link rel="stylesheet" href="../../../common/css/reset.css">
+
+  <link rel="stylesheet" href="variables.css">
+  <link rel="stylesheet" href="variables-dark.css">
+
+  <!--Common elements like h1, button, etc.-->
+  <link rel="stylesheet" href="analyze.css"> <!-- css specific to this page -->
+
+  <!-- <script src="../../../common/js/iframejqueryfix.js"></script>  -->
+  <!-- Use parent's jquery in iframe -->
+  <!--<script src="../../../common/js/bootstrap-table.min.js"></script>-->
+  <!-- <script src="analyze.js"></script>
+  <script src="../../../common/js/canvasjs.min.js"></script>
+  <script src="../../../common/js/jquery.canvasjs.js"></script>
+  <script src="../../../common/js/canvaschartspaint.js"></script> -->
+  <!-- <script src="../../../common/js/Chart.js"></script> -->
+  
+</head>
+
+<body  data-theme="light" onload="parent.sidebarLevel(1); parent.changeTitle('Analyze & GLM')">
+  <!-- @TODO: onload - add analysis menu items to navbar -->
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <div id="FactorsSidebar" class="col-xs-9 col-md-6 tabcontainer">
+
+        <ul id="factosTablist" class="nav tablistnav" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#factorsDiv" role="tablist" aria-expanded="true">
+              Raw
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#factorsCalculated" role="tablist" aria-expanded="false">
+              Calc
+            </a>
+          </li>
+        </ul>
+
+        <button id="runAnalysis" class="btn-exec">Run</button>
+
+        <div class="tab-content tab-space">
+          <div class="tab-pane active" id="factorsDiv" aria-expanded="true">
+            <div class="factorsearchbar row reverse">
+              <div class="col-xs-12 col-md-3"><button id="toggleUnselectedRaw" class="hideshow" data-type="1">Hide
+                  Unselected</button></div>
+              <div class="col-xs-12 col-md-5">
+                <div class="factorfilter label-floating"><input id="factorSearch" type="text"
+                    placeholder="Search in Factors..."><span class="highlight"></span><span class="bar"></span></div>
+              </div>
+              <div class="col-xs-12 col-md-4 factorsortbuttons"> <label class="form-check-label"> <input id="factor-all-select"
+                    type="checkbox" class="lumnicheck form-check-input factor-all-check" style="display:none" value=""> <label
+                    for="factor-all-select" class="toggle"><span></span></label></label>
+                <div class="factorsearchbarsorting"> <a class="factor-sort" data-order="0" data-type="0"><span> <svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                        <path
+                          d="M79.8 38.6v29.8c0.1 1.9 0.6 3.3 1.5 4.3s2.3 1.5 4.3 1.8l-0.4 10.9c-7.5 0-13.3-1.6-17.4-4.8 -7 3.2-14 4.8-21.1 4.8 -13 0-19.5-6.9-19.5-20.8 0-6.6 1.8-11.4 5.3-14.4 3.5-3 9-4.8 16.3-5.4l16.9-1.4v-4.7c0-3.5-0.8-5.9-2.3-7.3 -1.5-1.4-3.8-2.1-6.7-2.1 -5.6 0-12.6 0.4-20.9 1l-4.2 0.3 -0.5-10.1c9.5-2.3 18.3-3.4 26.2-3.4s13.7 1.7 17.3 5.2C78.1 25.6 79.8 31.1 79.8 38.6zM50.5 54.8c-6 0.5-9 3.8-9 9.8s2.7 9 8 9c4.4 0 9-0.7 13.9-2.1l2.4-0.8V53.4L50.5 54.8z">
+                        </path>
+                        <path d="M31.6 127.9v-12.7h48.5v12.7l-31.4 40h31.4v12.7H31.6v-12.7l31.5-40H31.6z"></path>
+                        <path
+                          d="M173.3 135.6c-0.2-1.6-1.1-2.9-2.4-3.7 -0.8-0.5-1.7-0.7-2.6-0.7 -1.7 0-3.4 0.9-4.3 2.4l-17.2 29.2V19.5c0-2.6-1.9-4.9-4.5-5.2 -3-0.3-5.5 2.1-5.5 5v143.6l-17.2-28.6c-0.9-1.5-2.5-2.4-4.3-2.4 -0.9 0-1.8 0.2-2.6 0.7 -1.3 0.8-2.2 2.1-2.4 3.7 -0.1 1.2 0.2 2.3 0.8 3.3l23.5 39.2c3.1 5.2 10.7 5.2 13.8 0l23.9-39.9C173.1 137.9 173.4 136.7 173.3 135.6z">
+                        </path>
+                      </svg> </span></a> <a class="factor-sort" data-order="0" data-type="1"><span> <svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                        <path
+                          d="M40.3 22.8c4.5-5.8 11.3-8.7 20.3-8.7 9 0 15.8 2.9 20.2 8.7 4.5 5.8 6.7 15.3 6.7 28.6s-2.3 22.7-6.8 28.2c-4.5 5.5-11.3 8.3-20.2 8.3s-15.7-2.7-20.2-8.2c-4.5-5.5-6.8-14.9-6.8-28.2C33.6 38.2 35.8 28.6 40.3 22.8zM71.8 30.5c-2.2-3.9-6-5.9-11.1-5.9 -5.2 0-8.9 2-11.2 5.9 -2.3 3.9-3.4 10.8-3.4 20.7 0 9.9 1.2 16.7 3.5 20.5 2.3 3.8 6.1 5.7 11.1 5.7s8.8-1.9 11-5.7c2.3-3.8 3.4-10.6 3.4-20.5C75.1 41.3 74 34.4 71.8 30.5z">
+                        </path>
+                        <path d="M74.2 116v71.4H62.1v-57.8l-16.8 10.8 -5.5-9 23.3-15.5H74.2z"></path>
+                        <path
+                          d="M173.3 135.6c-0.2-1.6-1.1-2.9-2.4-3.7 -0.8-0.5-1.7-0.7-2.6-0.7 -1.7 0-3.4 0.9-4.3 2.4l-17.2 29.2V19.5c0-2.6-1.9-4.9-4.5-5.2 -3-0.3-5.5 2.1-5.5 5v143.6l-17.2-28.6c-0.9-1.5-2.5-2.4-4.3-2.4 -0.9 0-1.8 0.2-2.6 0.7 -1.3 0.8-2.2 2.1-2.4 3.7 -0.1 1.2 0.2 2.3 0.8 3.3l23.5 39.2c3.1 5.2 10.7 5.2 13.8 0l23.9-39.9C173.1 137.9 173.4 136.7 173.3 135.6z">
+                        </path>
+                      </svg> </span></a> </div>
+              </div>
+            </div>
+
+            <div data-factor="AKSESUAR_SON_DURUM" data-correlation-abs="0.0034" data-correlation="-0.0034"
+              class="form-group factors gFactor">
+              <div class="lumnidatarow">
+                <label class="lumnidatarowlabel" for="factorCheckAKSESUAR_SON_DURUM5">
+                  <input type="checkbox" id="factorCheckAKSESUAR_SON_DURUM5" value="">
+                  <span class="columnlabel">
+                    <span class="tooltipbase">-0.00
+                      <span class="tooltiphover">This is the correlation score. (-0.0034)</span>
+                    </span>
+                    AKSESUAR_SON_DURUM AMA DEĞİL
+                  </span>
+                </label>
+                <div class="mini-buttons-hover">
+                  <div class="radiogroup factor-type">
+                    <input type="radio" id="ARAC_SAHIPLIK_YAS7" name="ARAC_SAHIPLIK_YAS3" value="1">
+                    <label for="ARAC_SAHIPLIK_YAS7">Numerical</label>
+                    <input type="radio" id="ARAC_SAHIPLIK_YAS8" name="ARAC_SAHIPLIK_YAS3" value="0" checked="">
+                    <label for="ARAC_SAHIPLIK_YAS8">Categorical</label>
+                  </div>
+                  <button class="minibutton " title="Create Calculation">
+                      <img src="../../../common/images/button_add.png">
+                  </button>
+                  <button class="minibutton " title="Show Preview">
+                      <img src="../../../common/images/button_preview.png">
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div data-factor="AKSESUAR_SON_DURUM" data-correlation-abs="0.0034" data-correlation="-0.0034"
+              class="form-group factors gFactor">
+              <div class="lumnidatarow">
+                <label class="lumnidatarowlabel" for="factorCheckAKSESUAR_SON_DURUM6">
+                  <input class="lumnicheckbox" type="checkbox" id="factorCheckAKSESUAR_SON_DURUM6" value="">
+                  <span class="columnlabel">
+                    <span class="tooltipbase">-0.00
+                      <span class="tooltiphover">This is the correlation score. (-0.0034)</span>
+                    </span>
+                    AKSESUAR_SON_DURUM
+                  </span>
+                </label>
+                <div class="mini-buttons-tray">
+                  <input type="checkbox" name="traycheck" class="traycheck">
+                  <img class="tray-icon" src="../../common/images/button_tray.png" alt="">
+                  <div class="tray-content">
+                    <div class="radiogroup factor-type">
+                      <input type="radio" id="ARAC_SAHIPLIK_YA7" name="ARAC_SAHIPLIK_YA3" value="1">
+                      <label for="ARAC_SAHIPLIK_YA7">Numerical</label>
+                      <input type="radio" id="ARAC_SAHIPLIK_YA8" name="ARAC_SAHIPLIK_YA3" value="0" checked="">
+                      <label for="ARAC_SAHIPLIK_YA8">Categorical</label>
+                    </div>
+                    <button class="minibutton " title="Create Calculation">
+                      <img src="../../../common/images/button_add.png">
+                    </button>
+                    <button class="minibutton " title="Show Preview">
+                      <img src="../../../common/images/button_preview.png">
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div data-factor="AKSESUAR_SON_DURUM" data-correlation-abs="0.0034" data-correlation="-0.0034"
+              class="form-group factors gFactor">
+              <div class="lumnidatarow">
+                <label class="lumnidatarowlabel" for="factorCheckAKSESUAR_SON_DURUM6">
+                  <input class="lumnicheckbox" type="checkbox" id="factorCheckAKSESUAR_SON_DURUM6" value="">
+                  <span class="columnlabel">
+                    <span class="tooltipbase">-0.00
+                      <span class="tooltiphover">This is the correlation score. (-0.0034)</span>
+                    </span>
+                    AKSESUAR_SON_DURUM
+                  </span>
+                </label>
+                <div class="mini-buttons-tray">
+                  <input type="checkbox" name="traycheck" class="traycheck">
+                  <img class="tray-icon" src="../../common/images/button_tray.png" alt="">
+                  <div class="tray-content">
+                    <div class="radiogroup factor-type">
+                      <input type="radio" id="ARAC_SAHIPLIK_YA7" name="ARAC_SAHIPLIK_YA3" value="1">
+                      <label for="ARAC_SAHIPLIK_YA7">Numerical</label>
+                      <input type="radio" id="ARAC_SAHIPLIK_YA8" name="ARAC_SAHIPLIK_YA3" value="0" checked="">
+                      <label for="ARAC_SAHIPLIK_YA8">Categorical</label>
+                    </div>
+                    <button class="minibutton " title="Create Calculation">
+                      <img src="../../../common/images/button_add.png">
+                    </button>
+                    <button class="minibutton " title="Show Preview">
+                      <img src="../../../common/images/button_preview.png">
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div data-factor="AKSESUAR_SON_DURUM" data-correlation-abs="0.0034" data-correlation="-0.0034"
+              class="form-group factors gFactor">
+              <div class="lumnidatarow">
+                <label class="lumnidatarowlabel" for="factorCheckAKSESUAR_SON_DURUM6">
+                  <input class="lumnicheckbox" type="checkbox" id="factorCheckAKSESUAR_SON_DURUM6" value="">
+                  <span class="columnlabel">
+                    <span class="tooltipbase">-0.00
+                      <span class="tooltiphover">This is the correlation score. (-0.0034)</span>
+                    </span>
+                    AKSESUAR_SON_DURUM
+                  </span>
+                </label>
+                <div class="mini-buttons-tray">
+                  <input type="checkbox" name="traycheck" class="traycheck">
+                  <img class="tray-icon" src="../../common/images/button_tray.png" alt="">
+                  <div class="tray-content">
+                    <div class="radiogroup factor-type">
+                      <input type="radio" id="ARAC_SAHIPLIK_YA7" name="ARAC_SAHIPLIK_YA3" value="1">
+                      <label for="ARAC_SAHIPLIK_YA7">Numerical</label>
+                      <input type="radio" id="ARAC_SAHIPLIK_YA8" name="ARAC_SAHIPLIK_YA3" value="0" checked="">
+                      <label for="ARAC_SAHIPLIK_YA8">Categorical</label>
+                    </div>
+                    <button class="minibutton " title="Create Calculation">
+                      <img src="../../../common/images/button_add.png">
+                    </button>
+                    <button class="minibutton " title="Show Preview">
+                      <img src="../../../common/images/button_preview.png">
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div data-factor="AKSESUAR_SON_DURUM" data-correlation-abs="0.0034" data-correlation="-0.0034"
+              class="form-group factors gFactor">
+              <div class="lumnidatarow">
+                <label class="lumnidatarowlabel" for="factorCheckAKSESUAR_SON_DURUM6">
+                  <input class="lumnicheckbox" type="checkbox" id="factorCheckAKSESUAR_SON_DURUM6" value="">
+                  <span class="columnlabel">
+                    <span class="tooltipbase">-0.00
+                      <span class="tooltiphover">This is the correlation score. (-0.0034)</span>
+                    </span>
+                    AKSESUAR_SON_DURUM
+                  </span>
+                </label>
+                <div class="mini-buttons-tray">
+                  <input type="checkbox" name="traycheck" class="traycheck">
+                  <img class="tray-icon" src="../../common/images/button_tray.png" alt="">
+                  <div class="tray-content">
+                    <div class="radiogroup factor-type">
+                      <input type="radio" id="ARAC_SAHIPLIK_YA7" name="ARAC_SAHIPLIK_YA3" value="1">
+                      <label for="ARAC_SAHIPLIK_YA7">Numerical</label>
+                      <input type="radio" id="ARAC_SAHIPLIK_YA8" name="ARAC_SAHIPLIK_YA3" value="0" checked="">
+                      <label for="ARAC_SAHIPLIK_YA8">Categorical</label>
+                    </div>
+                    <button class="minibutton " title="Create Calculation">
+                      <img src="../../../common/images/button_add.png">
+                    </button>
+                    <button class="minibutton " title="Show Preview">
+                      <img src="../../../common/images/button_preview.png">
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div data-factor="AKSESUAR_SON_DURUM" data-correlation-abs="0.0034" data-correlation="-0.0034"
+              class="form-group factors gFactor">
+              <div class="lumnidatarow">
+                <label class="lumnidatarowlabel" for="factorCheckAKSESUAR_SON_DURUM6">
+                  <input class="lumnicheckbox" type="checkbox" id="factorCheckAKSESUAR_SON_DURUM6" value="">
+                  <span class="columnlabel">
+                    <span class="tooltipbase">-0.00
+                      <span class="tooltiphover">This is the correlation score. (-0.0034)</span>
+                    </span>
+                    AKSESUAR_SON_DURUM
+                  </span>
+                </label>
+                <div class="mini-buttons-tray">
+                  <input type="checkbox" name="traycheck" class="traycheck">
+                  <img class="tray-icon" src="../../common/images/button_tray.png" alt="">
+                  <div class="tray-content">
+                    <div class="radiogroup factor-type">
+                      <input type="radio" id="ARAC_SAHIPLIK_YA7" name="ARAC_SAHIPLIK_YA3" value="1">
+                      <label for="ARAC_SAHIPLIK_YA7">Numerical</label>
+                      <input type="radio" id="ARAC_SAHIPLIK_YA8" name="ARAC_SAHIPLIK_YA3" value="0" checked="">
+                      <label for="ARAC_SAHIPLIK_YA8">Categorical</label>
+                    </div>
+                    <button class="minibutton " title="Create Calculation">
+                      <img src="../../../common/images/button_add.png">
+                    </button>
+                    <button class="minibutton " title="Show Preview">
+                      <img src="../../../common/images/button_preview.png">
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div data-factor="DAINI_MURTEHIN" data-correlation-abs="0.0182" data-correlation="-0.0182"
+              data-json="%7B%22column%22%3A%22DAINI_MURTEHIN%22%2C%22type%22%3A0%2C%22correlation%22%3A-0.0182%2C%22categorizable%22%3A1%2C%22marked%22%3A0%2C%22checked%22%3A0%2C%22changeable%22%3A0%2C%22error%22%3A0%2C%22error_message%22%3A%22%22%2C%22order_type%22%3A0%2C%22order%22%3A%5B%22YOK%22%2C%22VAR%22%5D%2C%22name%22%3A%22DAINI_MURTEHIN%22%7D"
+              class="form-group factors gFactor">
+              <div class="lumnidatarow "><label class="lumnidatarowlabel" for="factorCheckDAINI_MURTEHIN10"><input
+                    class="lumnicheckbox factor-check" type="checkbox" id="factorCheckDAINI_MURTEHIN10" value=""><span
+                    class="columnlabel"><span class="tooltipbase">-0.02<span class="tooltiphover">This is the correlation score.
+                        (-0.0182)</span></span><a class="factornotenumber"><span><img
+                          src="../../../common/images/button_notes.png">1</span></a> DAINI_MURTEHIN</span></label>
+                <div class="mini-buttons-hover">
+                  <div class="radiogroup factor-type"><input type="radio" id="DAINI_MURTEHIN0" name="DAINI_MURTEHIN" value="0"
+                      checked=""><label class="singlebutton" for="DAINI_MURTEHIN0">Categorical</label></div><button
+                    class="minibutton createCalculation" title="Create Calculation"><img
+                      src="../../../common/images/button_add.png"></button><button class="minibutton createPreview"
+                    title="Show Preview"><img src="../../../common/images/button_preview.png"></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div data-factor="AKSESUAR_SON_DURUM" data-correlation-abs="0.0034" data-correlation="-0.0034" class="form-group factors gFactor">
+              <div class="form-check ">
+                <label class="form-check-label"><input type="checkbox" id="factorCheckAKSESUAR_SON_DURUM0"
+                    class="lumnicheck form-check-input factor-check" style="display:none" value="">
+                  <label for="factorCheckAKSESUAR_SON_DURUM0" class="toggle">
+                    <span></span>
+                  </label>
+                </label>
+                <span class="columnlabel">
+                  <span class="tooltipbase">-0.00
+                    <span class="tooltiphover">This is the correlation score. (-0.0034)</span>
+                  </span> AKSESUAR_SON_DURUM</span>
+                <a class="createCalculation" title="Create Calculation">
+                  <span>
+                    <img src="../../../common/images/button_add.png">
+                  </span>
+                </a>
+                <a class="createPreview" title="Show Preview">
+                  <span>
+                    <img src="../../../common/images/button_preview.png">
+                  </span>
+                </a>
+                <div class="radiogroup factor-type"><input type="radio" id="AKSESUAR_SON_DURUM0" name="AKSESUAR_SON_DURUM" value="0" checked="">
+                  <label class="singlebutton" for="AKSESUAR_SON_DURUM0">Categorical</label>
+                </div>
+              </div>
+            </div>
+
+            <div data-factor="AKSESUAR_SON_DURUM" data-correlation-abs="0.0034" data-correlation="-0.0034"
+              class="form-group factors gFactor">
+              <div class="form-check ">
+                <label class="form-check-label"><input type="checkbox" id="factorCheckAKSESUAR_SON_DURUM0"
+                    class="lumnicheck form-check-input factor-check" style="display:none" value="">
+                  <label for="factorCheckAKSESUAR_SON_DURUM0" class="toggle">
+                    <span></span>
+                  </label>
+                </label>
+                <span class="columnlabel">
+                  <span class="tooltipbase">-0.00
+                    <span class="tooltiphover">This is the correlation score. (-0.0034)</span>
+                  </span> AKSESUAR_SON_DURUM</span>
+                <a class="createCalculation" title="Create Calculation">
+                  <span>
+                    <img src="../../../common/images/button_add.png">
+                  </span>
+                </a>
+                <a class="createPreview" title="Show Preview">
+                  <span>
+                    <img src="../../../common/images/button_preview.png">
+                  </span>
+                </a>
+                <div class="radiogroup factor-type">
+                  <input type="radio" id="ARAC_SAHIPLIK_YAS5" name="ARAC_SAHIPLIK_YAS2" value="1">
+                  <label for="ARAC_SAHIPLIK_YAS5">Numerical</label>
+                  <input type="radio" id="ARAC_SAHIPLIK_YAS6" name="ARAC_SAHIPLIK_YAS2" value="0" checked="">
+                  <label for="ARAC_SAHIPLIK_YAS6">Categorical</label>
+                </div>
+              </div>
+            </div> -->
+
+
+
+
+
+
+            <!-- <div data-factor="ANARENK" data-correlation-abs="0.0207" data-correlation="0.0207"
+              data-json="%7B%22column%22%3A%22ANARENK%22%2C%22type%22%3A0%2C%22correlation%22%3A0.0207%2C%22categorizable%22%3A1%2C%22marked%22%3A0%2C%22checked%22%3A0%2C%22changeable%22%3A0%2C%22error%22%3A0%2C%22error_message%22%3A%22%22%2C%22order_type%22%3A0%2C%22order%22%3A%5B%22BEYAZ%22%2C%22MISSING%22%2C%22KAHVERENGI%22%2C%22SIYAH%22%2C%22GRI%22%2C%22KIRMIZI%22%2C%22YESIL%22%2C%22SARI%22%2C%22MOR%22%2C%22MAVI%22%2C%22TURUNCU%22%5D%2C%22name%22%3A%22ANARENK%22%7D"
+              class="form-group factors gFactor">
+              <div class="form-check "><label class="form-check-label"><input type="checkbox" id="factorCheckANARENK1"
+                    class="lumnicheck form-check-input factor-check" style="display:none" value=""><label
+                    for="factorCheckANARENK1" class="toggle"><span></span></label></label><span class="columnlabel"><span
+                    class="tooltipbase">0.02<span class="tooltiphover">This is the correlation score. (0.0207)</span></span>
+                  ANARENK</span><a class="createCalculation" title="Create Calculation"><span><img
+                      src="../../../common/images/button_add.png"></span></a><a class="createPreview"
+                  title="Show Preview"><span><img src="../../../common/images/button_preview.png"></span></a>
+                <div class="radiogroup factor-type"><input type="radio" id="ANARENK0" name="ANARENK" value="0" checked=""><label
+                    class="singlebutton" for="ANARENK0">Categorical</label></div>
+              </div>
+            </div>
+            <div data-factor="ARAC_MARKA" data-correlation-abs="0.0195" data-correlation="-0.0195"
+              data-json="%7B%22column%22%3A%22ARAC_MARKA%22%2C%22type%22%3A0%2C%22correlation%22%3A-0.0195%2C%22categorizable%22%3A1%2C%22marked%22%3A0%2C%22checked%22%3A0%2C%22changeable%22%3A0%2C%22error%22%3A0%2C%22error_message%22%3A%22%22%2C%22order_type%22%3A0%2C%22order%22%3A%5B%22VOLKSWAGEN%22%2C%22HYUNDAI%22%2C%22OPEL%22%2C%22FORD%22%2C%22NISSAN%22%2C%22RENAULT%20(OYAK)%22%2C%22PORSCHE%22%2C%22MERCEDES%22%2C%22AUDI%22%2C%22DACIA%22%2C%22KIA%22%2C%22HONDA%22%2C%22MITSUBISHI%22%2C%22RENAULT%22%2C%22CHEVROLET%22%2C%22CHRYSLER%22%2C%22FIAT%22%2C%22TOYOTA%22%2C%22TOFAS-FIAT%22%2C%22PEUGEOT%22%2C%22SKODA%22%2C%22VOLVO%22%2C%22SEAT%22%2C%22LAND%20ROVER%22%2C%22BMW%22%2C%22CITROEN%22%2C%22ALFA%20ROMEO%22%2C%22MINI%22%2C%22RANGE%20ROVER%22%2C%22SUBARU%22%2C%22SSANGYONG%22%2C%22CHERY%22%2C%22MAZDA%22%2C%22SUZUKI%22%2C%22SMART%22%2C%22LANCIA%22%2C%22TATA%22%2C%22DAIHATSU%22%2C%22GEELY%22%2C%22IKCO%2FSAMAND%22%2C%22JAGUAR%22%5D%2C%22name%22%3A%22ARAC_MARKA%22%7D"
+              class="form-group factors gFactor">
+              <div class="form-check "><label class="form-check-label"><input type="checkbox" id="factorCheckARAC_MARKA2"
+                    class="lumnicheck form-check-input factor-check" style="display:none" value=""><label
+                    for="factorCheckARAC_MARKA2" class="toggle"><span></span></label></label><span class="columnlabel"><span
+                    class="tooltipbase">-0.02<span class="tooltiphover">This is the correlation score. (-0.0195)</span></span>
+                  ARAC_MARKA</span><a class="createCalculation" title="Create Calculation"><span><img
+                      src="../../../common/images/button_add.png"></span></a><a class="createPreview"
+                  title="Show Preview"><span><img src="../../../common/images/button_preview.png"></span></a>
+                <div class="radiogroup factor-type"><input type="radio" id="ARAC_MARKA0" name="ARAC_MARKA" value="0"
+                    checked=""><label class="singlebutton" for="ARAC_MARKA0">Categorical</label></div>
+              </div>
+            </div>
+            <div data-factor="ARAC_SAHIPLIK_YAS" data-correlation-abs="0.0134" data-correlation="0.0134"
+              data-json="%7B%22column%22%3A%22ARAC_SAHIPLIK_YAS%22%2C%22type%22%3A0%2C%22correlation%22%3A0.0134%2C%22categorizable%22%3A1%2C%22marked%22%3A0%2C%22checked%22%3A0%2C%22changeable%22%3A1%2C%22error%22%3A0%2C%22error_message%22%3A%22%22%2C%22order_type%22%3A0%2C%22order%22%3A%5B%226%22%2C%220%22%2C%221%22%2C%222%22%2C%223%22%2C%2211%22%2C%228%22%2C%225%22%2C%2212%22%2C%227%22%2C%224%22%2C%2210%22%2C%229%22%2C%2213%22%2C%2223%22%2C%2216%22%2C%2214%22%2C%2215%22%5D%2C%22name%22%3A%22ARAC_SAHIPLIK_YAS%22%7D"
+              class="form-group factors gFactor">
+              <div class="form-check "><label class="form-check-label"><input type="checkbox" id="factorCheckARAC_SAHIPLIK_YAS3"
+                    class="lumnicheck form-check-input factor-check" style="display:none" value=""><label
+                    for="factorCheckARAC_SAHIPLIK_YAS3" class="toggle"><span></span></label></label><span
+                  class="columnlabel"><span class="tooltipbase">0.01<span class="tooltiphover">This is the correlation score.
+                      (0.0134)</span></span> ARAC_SAHIPLIK_YAS</span><a class="createCalculation"
+                  title="Create Calculation"><span><img src="../../../common/images/button_add.png"></span></a><a
+                  class="createPreview" title="Show Preview"><span><img
+                      src="../../../common/images/button_preview.png"></span></a>
+                <div class="radiogroup factor-type"><input type="radio" id="ARAC_SAHIPLIK_YAS1" name="ARAC_SAHIPLIK_YAS"
+                    value="1"><label for="ARAC_SAHIPLIK_YAS1">Numerical</label><input type="radio" id="ARAC_SAHIPLIK_YAS0"
+                    name="ARAC_SAHIPLIK_YAS" value="0" checked=""><label for="ARAC_SAHIPLIK_YAS0">Categorical</label></div>
+              </div>
+            </div>
+            <div data-factor="ARAC_SEGMENT" data-correlation-abs="0.0044" data-correlation="-0.0044"
+              data-json="%7B%22column%22%3A%22ARAC_SEGMENT%22%2C%22type%22%3A0%2C%22correlation%22%3A-0.0044%2C%22categorizable%22%3A1%2C%22marked%22%3A0%2C%22checked%22%3A0%2C%22changeable%22%3A0%2C%22error%22%3A0%2C%22error_message%22%3A%22%22%2C%22order_type%22%3A0%2C%22order%22%3A%5B%22ALT%20KOMPAKT%22%2C%224X4%22%2C%22SEDAN%22%2C%22MINI%22%2C%22ALT%20SEDAN%22%2C%22CASE%20UW%22%2C%22UST%20SEDAN%22%2C%22UST%20KOMPAKT%22%2C%22CDV%22%2C%22KOMPAKT%22%2C%22AILE%22%2C%22LUKS%204X4%22%2C%22STATION%20WAGON%22%2C%22LUKS%20SEDAN%22%2C%22UST%20MINI%22%2C%22SPOR%22%2C%22LUKS%20SPOR%22%2C%22LUKS%20STATION%20WAGON%22%5D%2C%22name%22%3A%22ARAC_SEGMENT%22%7D"
+              class="form-group factors gFactor">
+              <div class="form-check "><label class="form-check-label"><input type="checkbox" id="factorCheckARAC_SEGMENT4"
+                    class="lumnicheck form-check-input factor-check" style="display:none" value=""><label
+                    for="factorCheckARAC_SEGMENT4" class="toggle"><span></span></label></label><span class="columnlabel"><span
+                    class="tooltipbase">-0.00<span class="tooltiphover">This is the correlation score. (-0.0044)</span></span>
+                  ARAC_SEGMENT</span><a class="createCalculation" title="Create Calculation"><span><img
+                      src="../../../common/images/button_add.png"></span></a><a class="createPreview"
+                  title="Show Preview"><span><img src="../../../common/images/button_preview.png"></span></a>
+                <div class="radiogroup factor-type"><input type="radio" id="ARAC_SEGMENT0" name="ARAC_SEGMENT" value="0"
+                    checked=""><label class="singlebutton" for="ARAC_SEGMENT0">Categorical</label></div>
+              </div>
+            </div>
+            <div data-factor="ARAC_TIPI" data-correlation-abs="0.009" data-correlation="0.009"
+              data-json="%7B%22column%22%3A%22ARAC_TIPI%22%2C%22type%22%3A0%2C%22correlation%22%3A0.009%2C%22categorizable%22%3A1%2C%22marked%22%3A0%2C%22checked%22%3A0%2C%22changeable%22%3A0%2C%22error%22%3A0%2C%22error_message%22%3A%22%22%2C%22order_type%22%3A0%2C%22order%22%3A%5B%22Binek%20Ara%20B%20Segmenti%22%2C%22SUV%20%2F%20Arazi%20arac%20I%20Segmenti%22%2C%22Binek%20Ara%20C%20Segmenti%22%2C%22Binek%20Ara%20A%20Segmenti%22%2C%22Binek%20Ara%20F%20Segmenti%22%2C%22Binek%20Ara%20E%20Segmenti%22%2C%22MISSING%22%2C%22Binek%20Ara%20G%20Segmenti%22%2C%22Binek%20Ara%20D%20Segmenti%22%2C%22Binek%20Ara%20H%20Segmenti%22%2C%22SUV%20%2F%20Arazi%20arac%20H%20Segmenti%22%2C%22SUV%20%2F%20Arazi%20arac%20B%20Segmenti%22%2C%22SUV%20%2F%20Arazi%20arac%20C%20Segmenti%22%2C%22SUV%20%2F%20Arazi%20arac%20E%20Segmenti%22%2C%22LCV%20%2F%20Hafif%20Ticari%20K%20Segmenti%22%5D%2C%22name%22%3A%22ARAC_TIPI%22%7D"
+              class="form-group factors gFactor">
+              <div class="form-check "><label class="form-check-label"><input type="checkbox" id="factorCheckARAC_TIPI5"
+                    class="lumnicheck form-check-input factor-check" style="display:none" value=""><label
+                    for="factorCheckARAC_TIPI5" class="toggle"><span></span></label></label><span class="columnlabel"><span
+                    class="tooltipbase">0.01<span class="tooltiphover">This is the correlation score. (0.0090)</span></span>
+                  ARAC_TIPI</span><a class="createCalculation" title="Create Calculation"><span><img
+                      src="../../../common/images/button_add.png"></span></a><a class="createPreview"
+                  title="Show Preview"><span><img src="../../../common/images/button_preview.png"></span></a>
+                <div class="radiogroup factor-type"><input type="radio" id="ARAC_TIPI0" name="ARAC_TIPI" value="0"
+                    checked=""><label class="singlebutton" for="ARAC_TIPI0">Categorical</label></div>
+              </div>
+            </div>
+            <div data-factor="ARAC_YASI" data-correlation-abs="0.0162" data-correlation="0.0162"
+              data-json="%7B%22column%22%3A%22ARAC_YASI%22%2C%22type%22%3A0%2C%22correlation%22%3A0.0162%2C%22categorizable%22%3A1%2C%22marked%22%3A0%2C%22checked%22%3A0%2C%22changeable%22%3A1%2C%22error%22%3A0%2C%22error_message%22%3A%22%22%2C%22order_type%22%3A0%2C%22order%22%3A%5B%226%22%2C%221%22%2C%220%22%2C%222%22%2C%223%22%2C%2212%22%2C%2218%22%2C%224%22%2C%228%22%2C%225%22%2C%229%22%2C%227%22%2C%2211%22%2C%2216%22%2C%2213%22%2C%2210%22%2C%2220%22%2C%2215%22%2C%2214%22%2C%2217%22%2C%2219%22%5D%2C%22name%22%3A%22ARAC_YASI%22%7D"
+              class="form-group factors gFactor">
+              <div class="form-check "><label class="form-check-label"><input type="checkbox" id="factorCheckARAC_YASI6"
+                    class="lumnicheck form-check-input factor-check" style="display:none" value=""><label
+                    for="factorCheckARAC_YASI6" class="toggle"><span></span></label></label><span class="columnlabel"><span
+                    class="tooltipbase">0.02<span class="tooltiphover">This is the correlation score. (0.0162)</span></span>
+                  ARAC_YASI</span><a class="createCalculation" title="Create Calculation"><span><img
+                      src="../../../common/images/button_add.png"></span></a><a class="createPreview"
+                  title="Show Preview"><span><img src="../../../common/images/button_preview.png"></span></a>
+                <div class="radiogroup factor-type"><input type="radio" id="ARAC_YASI1" name="ARAC_YASI" value="1"><label
+                    for="ARAC_YASI1">Numerical</label><input type="radio" id="ARAC_YASI0" name="ARAC_YASI" value="0"
+                    checked=""><label for="ARAC_YASI0">Categorical</label></div>
+              </div>
+            </div>
+            <div data-factor="BASAMAK_DEGISIM" data-correlation-abs="0.0191" data-correlation="0.0191"
+              data-json="%7B%22column%22%3A%22BASAMAK_DEGISIM%22%2C%22type%22%3A0%2C%22correlation%22%3A0.0191%2C%22categorizable%22%3A1%2C%22marked%22%3A0%2C%22checked%22%3A0%2C%22changeable%22%3A0%2C%22error%22%3A0%2C%22error_message%22%3A%22%22%2C%22order_type%22%3A0%2C%22order%22%3A%5B%22SABIT%22%2C%22ARTIS%22%2C%22DUSUS%22%2C%22YENI_POLICE%22%5D%2C%22name%22%3A%22BASAMAK_DEGISIM%22%7D"
+              class="form-group factors gFactor">
+              <div class="form-check "><label class="form-check-label"><input type="checkbox" id="factorCheckBASAMAK_DEGISIM7"
+                    class="lumnicheck form-check-input factor-check" style="display:none" value=""><label
+                    for="factorCheckBASAMAK_DEGISIM7" class="toggle"><span></span></label></label><span class="columnlabel"><span
+                    class="tooltipbase">0.02<span class="tooltiphover">This is the correlation score. (0.0191)</span></span>
+                  BASAMAK_DEGISIM</span><a class="createCalculation" title="Create Calculation"><span><img
+                      src="../../../common/images/button_add.png"></span></a><a class="createPreview"
+                  title="Show Preview"><span><img src="../../../common/images/button_preview.png"></span></a>
+                <div class="radiogroup factor-type"><input type="radio" id="BASAMAK_DEGISIM0" name="BASAMAK_DEGISIM" value="0"
+                    checked=""><label class="singlebutton" for="BASAMAK_DEGISIM0">Categorical</label></div>
+              </div>
+            </div> -->
+            
+          </div>
+          <div class="tab-pane" id="factorsCalculated" aria-expanded="true"><button id="toggleUnselectedCalc" class="hideshow" data-type="1">Hide Unselected</button><div data-type="0" data-json="%7B%22type%22%3A0%2C%22source_factor%22%3A%22motorGucu%22%2C%22name%22%3A%22BINNED_motorGucu%22%2C%22checked%22%3A1%2C%22factor_type%22%3A1%2C%22interaction_factor%22%3A%22%22%2C%22merge_bins%22%3A%5B%7B%22values%22%3A%5B%220%22%2C%221%22%2C%22100%22%2C%22101%22%2C%22102%22%2C%22103%22%2C%22104%22%2C%22105%22%2C%22106%22%2C%22109%22%2C%2211%22%5D%2C%22group_name%22%3A%22m1%22%7D%2C%7B%22values%22%3A%5B%22110%22%2C%22111%22%2C%22112%22%2C%22113%22%2C%22114%22%2C%22115%22%2C%22116%22%2C%22118%22%2C%22119%22%2C%22120%22%2C%22122%22%2C%22124%22%2C%22125%22%2C%22127%22%2C%22128%22%2C%22129%22%2C%22130%22%2C%22132%22%2C%22134%22%2C%22135%22%2C%22136%22%2C%22140%22%2C%22141%22%2C%22145%22%5D%2C%22group_name%22%3A%22m2%22%7D%2C%7B%22values%22%3A%5B%22180%22%2C%22184%22%2C%22188%22%2C%22190%22%2C%22195%22%2C%22200%22%2C%22204%22%2C%22217%22%2C%22225%22%2C%22294%22%2C%2236%22%2C%2244%22%2C%2247%22%2C%2248%22%2C%225%22%2C%2250%22%2C%2251%22%2C%2252%22%2C%2253%22%2C%2254%22%2C%2255%22%2C%2256%22%2C%2257%22%2C%2258%22%2C%2259%22%2C%2260%22%2C%2261%22%2C%2262%22%2C%2263%22%2C%2264%22%2C%2265%22%5D%2C%22group_name%22%3A%22m3%22%7D%2C%7B%22values%22%3A%5B%221461%22%2C%22147%22%2C%221475%22%2C%22150%22%2C%22155%22%2C%22160%22%2C%22165%22%2C%22169%22%2C%22170%22%2C%22173%22%2C%22176%22%2C%22177%22%2C%2266%22%2C%2268%22%2C%2269%22%2C%2270%22%2C%2271%22%2C%2272%22%2C%2273%22%2C%2274%22%2C%2275%22%2C%2276%22%5D%2C%22group_name%22%3A%22m4%22%7D%2C%7B%22values%22%3A%5B%2277%22%2C%2278%22%2C%2279%22%2C%2280%22%2C%2281%22%2C%2282%22%2C%2283%22%2C%2284%22%2C%2285%22%2C%2286%22%2C%2287%22%2C%2288%22%2C%2289%22%2C%2290%22%2C%2291%22%2C%2292%22%2C%2293%22%2C%2294%22%2C%2295%22%2C%2296%22%2C%2297%22%2C%2298%22%2C%2299%22%2C%229999%22%5D%2C%22group_name%22%3A%22m5%22%7D%5D%7D" data-factor="BINNED_motorGucu" class="form-group calcFactors gFactor"><div class="form-check factorchecked"><label class="form-check-label"><input type="checkbox" id="factorCalcBINNED_motorGucu" class="lumnicheck form-check-input factor-check" style="display:none" value="" checked=""><label for="factorCalcBINNED_motorGucu" class="toggle"><span></span></label></label><div class="radiogroup factor-type" style="right:88px"><input type="radio" id="BINNED_motorGucu_calc" name="BINNED_motorGucu" value="0" checked=""><label class="singlebutton" for="BINNED_motorGucu_calc">Categorical</label></div><span class="columnlabel">BINNED_motorGucu</span><a data-source-factor="motorGucu" class="editCalculation" title="Edit Calculation" style="right: 70px;"><span><img src="../../../common/images/button_edit.png"></span></a><a class="removeCalculation" title="Remove Calculation" style="right: 48px;"><span><img src="../../../common/images/button_remove.png"></span></a><a class="gotoRenderedTab" onclick="gotoRenderedTab('BINNED_motorGucu')" title="Go Details"><span><img src="../../../common/images/button_goto.png"></span></a><a class="createCalculation" title="Create Calculation"><span><img src="../../../common/images/button_add.png"></span></a></div></div><div data-type="0" data-json="%7B%22type%22%3A0%2C%22source_factor%22%3A%22ARAC_TIPI%22%2C%22name%22%3A%22IN_ARAC_TIPI__ARAC_SEGMENT%22%2C%22checked%22%3A1%2C%22factor_type%22%3A0%2C%22interaction_factor%22%3A%22ARAC_SEGMENT%22%2C%22merge_bins%22%3A%5B%5D%7D" data-factor="IN_ARAC_TIPI__ARAC_SEGMENT" class="form-group calcFactors gFactor"><div class="form-check factorchecked"><label class="form-check-label"><input type="checkbox" id="factorCalcIN_ARAC_TIPI__ARAC_SEGMENT" class="lumnicheck form-check-input factor-check" style="display:none" value="" checked=""><label for="factorCalcIN_ARAC_TIPI__ARAC_SEGMENT" class="toggle"><span></span></label></label><div class="radiogroup factor-type" style="right:88px"><input type="radio" id="IN_ARAC_TIPI__ARAC_SEGMENT_calc" name="IN_ARAC_TIPI__ARAC_SEGMENT" value="0" checked=""><label class="singlebutton" for="IN_ARAC_TIPI__ARAC_SEGMENT_calc">Categorical</label></div><span class="columnlabel">IN_ARAC_TIPI__ARAC_SEGMENT</span><a data-source-factor="ARAC_TIPI" class="editCalculation" title="Edit Calculation" style="right: 70px;"><span><img src="../../../common/images/button_edit.png"></span></a><a class="removeCalculation" title="Remove Calculation" style="right: 48px;"><span><img src="../../../common/images/button_remove.png"></span></a><a class="gotoRenderedTab" onclick="gotoRenderedTab('IN_ARAC_TIPI__ARAC_SEGMENT')" title="Go Details"><span><img src="../../../common/images/button_goto.png"></span></a><a class="createCalculation" title="Create Calculation"><span><img src="../../../common/images/button_add.png"></span></a></div></div></div>
+        </div>
+      </div>
+      <div class="col-xs-3 col-md-6 tabcontainer" id="tabDetails">
+        <ul id="tablist" class="nav tablistnav horizontalscroll" role="tablist">
+
+        </ul>
+
+        <div id="tabContents" class="tab-content tab-space">
+
+          <input class="lumnicheckbox" type="checkbox" id="abc" value="">
+          <input class="lumnicheckbox" type="checkbox" id="cda" value="" disabled>
+          <input class="lumnicheckbox" type="checkbox" id="cda" value="" checked disabled>
+          <br>
+          <br>
+
+        </div>
+
+      </div>
+    </div>
+  </div> <!-- container end -->
+
+  <!--<div class="fixedfooter">
+    <span id="analysisDetails"></span>
+  </div>-->
+
+  <!-- Modals -->
+
+  <div id="previewFactor">
+
+  </div>
+
+  <div id="runningModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Create Analysis</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="control-label">Analysis Name</label>
+            <input type="text" id="txtAnalysisName" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="runNewAnalysis" type="button" class="btn btn-action">Run</button>
+          <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- running modal -->
+
+  <div id="loadModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Load Analysis</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="control-label">Name</label>
+            <select class="form-control" id="loadSelect">
+
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="loadAnalysis" type="button" class="btn btn-action" data-dismiss="modal">Load</button>
+          <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div> <!-- load modal -->
+
+  <div id="deleteModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Delete Analysis</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Do you want to delete this analysis?</p>
+        </div>
+        <div class="modal-footer">
+          <button onclick="deleteAnalysis()" type="button" class="btn btn-action" data-dismiss="modal">Delete</button>
+          <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div> <!-- delete modal -->
+
+  <div id="createCalcCategoricalModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Create Calculated Factor for </h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="modalselect">
+                <label>Calculated Factor Type</label>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label form-checkradio">
+                    <input class="form-check-input calcCatFactorType" type="radio" name="calcCatFactorType"
+                      id="calcCatFactorType1" value="0" checked>
+                    Interaction
+                    <span class="checkboxspan"></span>
+                  </label>
+                </div>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label form-checkradio">
+                    <input class="form-check-input calcCatFactorType" type="radio" name="calcCatFactorType"
+                      id="calcCatFactorType2" value="1">
+                    Merge Categories
+                    <span class="checkboxspan"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="calcCatFactorInteractions" class="row">
+            <div class="col-xs-12">
+              <label for="calcCatInteracted">Interacted Factor</label>
+              <select class="form-control" id="calcCatInteracted">
+              </select>
+            </div>
+          </div>
+
+          <div id="calcCatFactorMerge">
+            <div class="row">
+
+              <div class="col-md-8 col-xs-12">
+                <div class="calccatbeforetable">
+                  <div id='calcCatFactorMergeGraph'></div>
+                </div>
+
+                <table class="table table-responsive">
+                  <thead>
+                    <tr>
+                      <th>Remove</th>
+                      <th>Name</th>
+                      <th>Values</th>
+                    </tr>
+                  </thead>
+                  <tbody id="calcCatMergeTable">
+                    <tr class="initrow">
+                      <td colspan=3>There are no rules defined.</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+
+              <div class="col-md-4 col-xs-12">
+                <!--<select style="height: 96%" multiple class="form-control selectpicker" data-style="btn btn-link" id="calcCatMergeSelect">
+                    </select>-->
+                <div class="modalselect">
+                  <div id="calcCatMergeSelect" class="modalselect"></div>
+
+                  <div id="calcCatMergeAddDiv">
+                    <input type="text" class="form-control" placeholder="Group Name" id="calcCatMergeName">
+                    <button type="button" class="btn-modal-action" id="calcCatMergeAddBtn">Add</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <hr>
+          <div class="row">
+            <div class="form-group label-floating text-right col-xs-12 col-md-offset-2 col-md-8">
+              <input class="form-control" id="calcCatFactorName" type="text">
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label class="control-label">Calculated Factor Name</label>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button id="createCategoricalFactor" type="button" class="btn btn-action">Create</button>
+        <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+  </div> <!-- create categorical modal -->
+
+  <div id="createCalcNumericalModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Create Calculated Factor for </h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6 col-xs-12">
+              <div class="modalselect">
+                <label>Calculated Factor Type</label>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label form-checkradio">
+                    <input class="form-check-input calcNumFactorType" type="radio" name="calcNumFactorType"
+                      id="calcNumFactorType2" value="1" checked disabled>
+                    Bins
+                    <span class="checkboxspan"></span>
+                  </label>
+                </div>
+                <!-- <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label form-checkradio">
+                    <input class="form-check-input calcNumFactorType" type="radio" name="calcNumFactorType"
+                      id="calcNumFactorType1" value="0" disabled>
+                    Variate
+                    <span class="checkboxspan"></span>
+                  </label>
+                </div> -->
+              </div>
+            </div>
+
+            <div class="col-md-6 col-xs-12" id="calcNumFactorBinsSelect">
+              <div class="modalselect">
+                <label>Binning</label>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label form-checkradio">
+                    <input class="form-check-input binningRadio" type="radio" name="binningRadio" value="0" checked>
+                    Auto - Rank
+                    <span class="checkboxspan"></span>
+                  </label>
+                </div>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label form-checkradio">
+                    <input class="form-check-input binningRadio" type="radio" name="binningRadio" value="2">
+                    Auto - Distribution
+                    <span class="checkboxspan"></span>
+                  </label>
+                </div>
+                <div class="form-check form-check-radio form-check-inline">
+                  <label class="form-check-label form-checkradio">
+                    <input class="form-check-input binningRadio" type="radio" name="binningRadio" value="1"> Manual
+                    <span class="checkboxspan"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="calcNumFactorVariateTable" class="row"></div>
+
+          <div id="calcNumFactorBins" class="row" style="display: none;">
+            <div id="autoBinningDiv" class="col-xs-12">
+              <div class="form-group">
+                <label for="autoBinningBinCount">Bin Count</label>
+                <input type="number" min="0" max="100" class="form-control" placeholder="" id="autoBinningBinCount">
+              </div>
+            </div>
+            <div class="col-xs-12" id="manualBinningDiv">
+              <div class="row">
+                <div id="manualBinningCanvas"></div>
+              </div>
+              <div class="row">
+
+                <div class="col-md-6 col-xs-12">
+                  <div class="modalselect">
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <label id="manualBinningMinMaxValues"></label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-md-12">
+                        <div class="row">
+                          <div class="col-md-5 col-xs-12">
+                            <input type="number" step="0.0001" class="form-control" placeholder=""
+                              id="manualBinningMin">
+                          </div>
+                          <div class="col-md-2 col-xs-12">
+                            <label id="manualBinninglabel"></label>
+                          </div>
+                          <div class="col-md-5 col-xs-12">
+                            <input type="number" step="0.0001" class="form-control" placeholder=""
+                              id="manualBinningMax">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <hr>
+                    <div class="row">
+                      <div class="col-xs-8">
+                        <input type="text" class="form-control" placeholder="Bin Name" id="manualBinningName">
+                      </div>
+                      <div class="col-xs-4">
+                        <button type="button" id="manualBinningAddRuleBtn" class="btn-modal-action">Add Rule</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xs-12 col-md-6">
+                  <table class="table table-responsive">
+                    <thead>
+                      <tr>
+                        <th>Remove</th>
+                        <th>Name</th>
+                        <th>Rule</th>
+                      </tr>
+                    </thead>
+                    <tbody id="manualBinningTable">
+                      <tr class="initrow">
+                        <td colspan=3>There are no rules defined.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="row">
+            <hr>
+            <div class="form-group label-floating text-right col-xs-12 col-md-offset-2 col-md-8">
+              <input class="form-control" id="calcNumFactorName" type="text">
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label class="control-label">Calculated Factor Name</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-action" id="createNumericalFactor">Create</button>
+          <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="modelTabTemplate" style="display: none;">
+    <button type="button" id="exportCoefficients" class="btn btn-action">Export Coefficients</button>
+    <button type="button" id="exportPreds" class="btn btn-action">Export Predictions</button>
+    <div class="row modelTabContentResults">
+      <div class="col-md-4 col-xs-12">
+          <h2>Statistics</h2>
+          <table class="table statsTable resulttable">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Value</th>
+                  <th>Previous Value</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+          </table>
+          <hr>
+          <h2>Train Metrics</h2>
+          <table class="table metricsTable resulttable TrainMetrics">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Value</th>
+                  <th>Previous Value</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+          </table>
+          <div class="modelResultsTestMetrics">
+            <hr>
+            <h2>Test Metrics</h2>
+            <table class="table metricsTable resulttable TestMetrics">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Value</th>
+                    <th>Previous Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+          </div>
+          <div class="modelResultsValidationMetrics">
+            <hr>
+            <h2>Validation Metrics</h2>
+            <table class="table metricsTable resulttable ValidationMetrics">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Value</th>
+                    <th>Previous Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+          </div>
+      </div>
+
+      <div class="col-md-8 col-xs-12">
+        <div id="lorenz-graph-train"></div>
+        <div id="residual-graph-train"></div>         
+        <!-- <div id="lorenz-graph-train" style="height: 500px;"></div> -->
+        <!-- <div id="lorenz-graph-test" style="height: 150px;"></div>
+        <div id="lorenz-graph-validation" style="height: 150px;"></div> -->
+          <h2>Selected Correlations</h2>
+          <div id="results_correlations" class="horizontalscroll"></div>
+          <h2>Factors</h2>
+          <table class="table factorsTable resulttable">
+              <thead>
+                  <tr class="factorsHead">
+                  </tr>
+              </thead>
+              <tbody>
+              </tbody>
+          </table>         
+        </div>
+
+    </div>
+  </div>
+  <!--  -->
+  <!--Smoothing Modal  -->
+  <!--  -->
+
+  <div id="smoothingModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Smoothing</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-action" id="smoothingSaveBtn">Save & Update Model</button>
+          <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div id="noteModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title"></h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h2>Saved Notes:</h2>
+        <div id="comments" class="comments">
+        </div>
+        <input type="hidden" id="varnotefactorname">
+        <h2>Add Note</h2>
+        <div class="row">
+          <div class="col-sm-12 col-xs-12">
+            <div class="comment-textinput">
+                    <textarea name="body"  id="noteBody" placeholder="Add a note"></textarea>
+            </div>
+            <button id="saveVarNoteBtn" type="button" class="btn btn-action">Save Note</button>
+          </div>
+          <br></br>
+          <div class="container">
+          </div>
+          <div id="noteTemplate" style="display: none;">
+            <div class="comment-wrap">
+              <div class="comment-block">
+                <div class="comment-top">
+                  <div class="comment-title"></div>
+                  <div class="comment-info">
+                    <div class="deleteBtn varNotedeleteBtn">DELETE</div>
+                  </div>
+                </div>
+                <p class="comment-text"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-cancel" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--  -->
+  <!-- END Smoothing Modal  -->
+  <!--  -->
+
+  <div id="dataOrderModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Set Data Order</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-action" id="saveDataOrderBtn">Save</button>
+          <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="dataOrderBodyTemplate" style="display: none;">
+    <div class="row">
+        <div class="col-md-8 col-xs-12">
+          <div id='dataOrderGraph'></div>
+        </div>
+        <div class="col-md-4 col-xs-12">
+          <div>
+            <label>Data Order</label>
+            <select data-factorname="{{factor-name}}" class="form-control dataOrderselect">
+              <option value="0">A-Z</option>
+              <option value="1">Z-A</option>
+              <option value="2">Exposure &uarr;</option>
+              <option value="3">Exposure &darr;</option>
+              <option value="4">Actual &uarr;</option>
+              <option value="5">Actual &darr;</option>
+              <option class="numerable" value="6">As Number &uarr;</option>
+              <option class="numerable" value="7">As Number &darr;</option>
+              <option value="8">Manual</option>
+            </select>
+          </div>
+          <div>
+            <table class="table">
+              <thead><tr><th>Value</th><th>Exposure</th><th>Actual</th></tr></thead>
+              <tbody class="manual-data-order-table"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+  </div>
+</body>
+</html>

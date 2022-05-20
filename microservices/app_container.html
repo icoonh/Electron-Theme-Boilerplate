@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- Tariff Module Container - @todo: ARIA version -->
+    <title>DOLPHIN</title> 
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <link rel="stylesheet" href="../common/css/sweetalert2.css"> <!--Sweetalert2 css-->
+    <link rel="stylesheet" href="../common/css/reset.css"> <!--Common elements like h1, button, etc.-->
+    <link rel="stylesheet" href="../common/css/navbar.css"> <!-- Titlebar/Navbar-->
+    <link rel="stylesheet" href="app_container_style.css"><!--css specific to this container-->
+
+    <script src="../common/js/sweetalert2.all.js"></script> <!-- Sweetalert2 js -->
+    <script src="../common/js/container_init.js"></script> <!-- initializing jquery, global variables and functions -->
+
+    <script src="../common/js/navbar.js"></script> <!--Navbar, Sidebar and titlebar actions-->
+    <script src="../common/js/changepage.js"></script> <!--Change maincontainer with other html onclick-->
+    
+    <script src="../common/js/loader.js"></script>
+
+  </head>
+  <body>
+    <nav id="tariff_navbar">
+        <div class="container">
+
+          <div id="tariff_hamburger"> <!--Responsive Hamburger Button-->
+            <button class="hamburger hamburger--slider" type="button"> 
+                <span class="hamburger-box">
+                  <span class="hamburger-inner"></span>
+                </span>
+            </button> 
+          </div>
+
+          <div class="collapse navbar-collapse" id="navbarNavDropdown"> <!-- Menu items -->
+            <div class="navbar-logo"><span class="navbar-logo-image"></span></div>
+            <div class="navbar-logo-responsive"><img src="../common/images/logo_white_responsive.png" alt="App Logo"></div>
+                          <ul class="navbar-nav">                 
+                            <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink">
+                              File
+                            </a>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="#" onclick="gotoPage('start/index.html')">Create or Open Project</a>
+                              <!-- <a class="dropdown-item" href="#">Open Project</a> -->
+                              <!-- <a class="dropdown-item" href="#">Save Project</a>
+                              <a class="dropdown-item" href="#">Save As Project</a>
+                              <a class="dropdown-item" href="#">Close Project</a>
+                              <a class="dropdown-item" href="#">Recent Projects</a> -->
+                              <a class="dropdown-item" href="javascript:openSettingsWindow()">Settings</a>
+                              <span class="dropdown-separator"></span>
+                              <a class="dropdown-item" href="#" onclick="goodBye()">Exit</a>
+                            </div>
+                          </li>
+                          <li class="nav-item dropdown" id="ruledropdown" style="display: none;">
+                            <a class="nav-link dropdown-toggle" href="#">
+                              Rules
+                            </a>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="#" onclick="openRuleEnginePage(0)">Rule Engine</a>
+                              <a class="dropdown-item" href="#" onclick="gotoPage('constantvalues/index.html')">Constant Values</a>
+                              <a class="dropdown-item" href="#" onclick="openRuleEnginePage(1)">Aggregated Rule Engine</a>
+                            </div>
+                          </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#">
+                              Help
+                            </a>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="#">Dolphin <span id="product-version">v1.0</span></a>
+                              <span class="dropdown-separator"></span>
+                              <a class="dropdown-item" href="#" onclick="openHelpWindow('notes')">Notes</a>
+                              <a class="dropdown-item" href="#" onclick="openHelpWindow('log')">Project Logs</a>
+                              <a class="dropdown-item" href="#" onclick="openHelpWindow('usermanual')">User Manual</a>
+                              <a class="dropdown-item" href="#" onclick="openHelpWindow('error_log')">Send Error Logs</a>
+                              <span class="dropdown-separator"></span>
+                              <a class="dropdown-item" href="#" onclick="openHelpWindow('license')">Change License</a>
+
+                            </div>
+                          </li>
+                          
+                        </ul>
+                    </div> <!-- Menu items -->
+                    
+                    <!--TitleBar-->
+                    <div id="titlebar">Dolphin | <span id="secondtitle">Start</span><span id="thirdtitle"></span></div>
+
+
+                    <div id="window-controls"> <!--window controls-->
+                        <div class="window-button" id="min-button">
+                            <img src="../common/images/window_minimize.png" />
+                        </div>
+                        <div class="window-button disabled" id="max-button">
+                            <img src="../common/images/window_maximize.png" />
+                        </div>
+                        <div class="window-button" id="restore-button">
+                            <img src="../common/images/window_restore.png" />
+                        </div>
+                        <div class="window-button" id="close-button">
+                            <img src="../common/images/window_close.png" />
+                        </div>
+                    </div> <!--window controls-->
+
+        </div><!--container-->
+    </nav><!--tariff_navbar-->
+
+    <div id="maincontainer" class="fullcontent"> <!-- under navbar container -->
+
+      <div id="tariffsidebar" class="nosidebar"> <!-- SIDEBAR -->
+
+        <!--Minimize/expand sidebar-->
+        <!--<button id="btn_sidebar" onclick="toggleSideBar()"> 
+          <div class="widestate"><img src="../common/images/sidebar_close.png" /></div>
+          <div class="narrowstate"><img src="../common/images/sidebar_open.png" /></div>
+        </button>-->
+
+        <div id="progresslist">
+          <button id="btn_mergedata" class="progressbutton" data-url="merge/index.html">
+              <div class="buttonicon"><img src="../common/images/sidebaricon_merge_2.png" alt="Merge" /></div>
+              <div class="buttoniconactive"><img src="../common/images/sidebaricon_merge_1.png" alt="Merge" /></div>
+              <div class="buttonlabel">Merge Models</div>
+              <span class="tooltiptext">Merge Models</span>
+          </button>
+          <button id="btn_simulation" class="progressbutton" data-url="simulation/index.html">
+              <div class="buttonicon"><img src="../common/images/sidebaricon_simulation_2.png" alt="Simulation" /></div>
+              <div class="buttoniconactive"><img src="../common/images/sidebaricon_simulation_1.png" alt="Simulation" /></div>
+              <div class="buttonlabel">Simulation</div>
+              <span class="tooltiptext">Simulation</span>
+          </button>
+          <button id="btn_comparison" class="progressbutton" data-url="comparison/index.html">
+            <div class="buttonicon"><img src="../common/images/sidebaricon_simulationcomparison_2.png" alt="Comparison" /></div>
+            <div class="buttoniconactive"><img src="../common/images/sidebaricon_simulationcomparison_1.png" alt="Comparison" /></div>
+            <div class="buttonlabel">Simulation Comparison</div>
+            <span class="tooltiptext">Simulation Comparison</span>
+        </button>
+          <button id="btn_register" class="progressbutton" data-url="report/index.html">
+              <div class="buttonicon"><img src="../common/images/sidebaricon_register_2.png" alt="Report" /></div>
+              <div class="buttoniconactive"><img src="../common/images/sidebaricon_register_1.png" alt="Report" /></div>
+              <div class="buttonlabel">Report</div>
+              <span class="tooltiptext">Report</span>
+          </button>
+          <button id="btn_engine" class="progressbutton" data-url="engine/index.html">
+              <div class="buttonicon"><img src="../common/images/sidebaricon_engine_2.png" alt="Engine" /></div>
+              <div class="buttoniconactive"><img src="../common/images/sidebaricon_engine_1.png" alt="Engine" /></div>
+              <div class="buttonlabel">Engine</div>
+              <span class="tooltiptext">Engine</span>
+          </button>
+        </div>
+        <div id="sidebar_append">
+          <!-- Maybe we can append dynamic content here. -->
+        </div>
+
+      </div> <!-- SIDEBAR END -->
+
+ <!-- MAIN CONTENT -->
+            <!--<div id="maincontent">
+              <h2>TARIFF GENERATOR</h2>
+              <h1>Get Started:</h1>
+              <button type="button" class="btn-red" onclick="window.location='createproject/index.html';">Start a new project</button> or <button type="button" class="btn-red" id="btn_openproject">Open existing project</button>
+              <br><button type="button" class="btn-red" onclick="gotoPage('tariffmodule/createproject/index.html')">Update Div Test</button>
+              <div id="recentprojects">
+                <h3>Recent Projects:</h3>
+                <div id="recentlist">Loading...</div>
+              </div>
+            </div>-->
+
+              <iframe name="maincontent" id="maincontent" src="start/index.html" 
+                  frameborder="0" border="0" cellspacing="0"
+                  style="border-style: none; width: 100%; height: 100%;"
+                  onload="initMainContent();">
+              </iframe>
+
+              <!--<webview id="maincontent" src="start/index.html" nodeintegration="false"></webview>--> <!-- Daha sonra webview'a cekmek dogru olur mu -->
+            
+<!-- MAIN CONTENT END -->
+
+  </div> <!-- under navbar container end-->
+  </div> <!--pagecontainer end-->
+  
+  </body>
+</html>

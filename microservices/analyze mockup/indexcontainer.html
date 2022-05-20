@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+
+  <title>Default App - Main Screen</title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+    name='viewport' />
+
+  <link rel="stylesheet" href="../../../common/css/flexboxgrid.css"> <!-- Flexbox responsive grid system -->
+  <link rel="stylesheet" href="../../../common/css/reset.css">
+
+  <link rel="stylesheet" href="variables.css">
+  <link rel="stylesheet" href="variables-dark.css">
+
+  <!--Common elements like h1, button, etc.-->
+  <link rel="stylesheet" href="analyze.css"> <!-- css specific to this page -->
+
+  <!-- <script src="../../../common/js/iframejqueryfix.js"></script>  -->
+  <!-- Use parent's jquery in iframe -->
+  <!--<script src="../../../common/js/bootstrap-table.min.js"></script>-->
+  <!-- <script src="analyze.js"></script>
+  <script src="../../../common/js/canvasjs.min.js"></script>
+  <script src="../../../common/js/jquery.canvasjs.js"></script>
+  <script src="../../../common/js/canvaschartspaint.js"></script> -->
+  <!-- <script src="../../../common/js/Chart.js"></script> -->
+  
+</head>
+
+<body  data-theme="light" onload="parent.sidebarLevel(1); parent.changeTitle('Analyze & GLM')">
+  <!-- @TODO: onload - add analysis menu items to navbar -->
+
+<h2>Iframe test</h2>
+<hr>
+
+  <iframe name="maincontent" id="maincontent" src="index.html"
+                  frameborder="0" border="0" cellspacing="0"
+                  style="border-style: none; width: 100%; height: 100%;"
+                  >
+              </iframe>
+</body>
+</html>
